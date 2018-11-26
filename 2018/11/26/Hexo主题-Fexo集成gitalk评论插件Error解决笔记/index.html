@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo主题-Fexo集成gitalk评论插件Error解决笔记 | Flynn Ji</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="hexo,fexo," />
+  
+
+  <meta name="description" content="博客用的是Hexo框架下的开源主题Fexo。集成评论插件时出现了一些error。 Error：Not Found在评论组件上方页面提示 Error: Not Found. 一般是由于repo填写错误，检查主题配置文件repo字段，即repo字段内容直接填写仓库名，例如：hexo_blog_comments，而不是https://github.com/fly9006/hexo_blog_commen">
+<meta name="keywords" content="hexo,fexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo主题-Fexo集成gitalk评论插件Error解决笔记">
+<meta property="og:url" content="https://fly9006.github.io/2018/11/26/Hexo主题-Fexo集成gitalk评论插件Error解决笔记/index.html">
+<meta property="og:site_name" content="Flynn Ji">
+<meta property="og:description" content="博客用的是Hexo框架下的开源主题Fexo。集成评论插件时出现了一些error。 Error：Not Found在评论组件上方页面提示 Error: Not Found. 一般是由于repo填写错误，检查主题配置文件repo字段，即repo字段内容直接填写仓库名，例如：hexo_blog_comments，而不是https://github.com/fly9006/hexo_blog_commen">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14073259-8312ad41a692eeae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-26T08:34:52.818Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo主题-Fexo集成gitalk评论插件Error解决笔记">
+<meta name="twitter:description" content="博客用的是Hexo框架下的开源主题Fexo。集成评论插件时出现了一些error。 Error：Not Found在评论组件上方页面提示 Error: Not Found. 一般是由于repo填写错误，检查主题配置文件repo字段，即repo字段内容直接填写仓库名，例如：hexo_blog_comments，而不是https://github.com/fly9006/hexo_blog_commen">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14073259-8312ad41a692eeae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cben" rel="stylesheet">
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Error：Not-Found"><span class="toc-text">Error：Not Found</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error-Validation-Failed"><span class="toc-text">Error: Validation Failed</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Hexo主题-Fexo集成gitalk评论插件Error解决笔记" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Hexo主题-Fexo集成gitalk评论插件Error解决笔记</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.11.26</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Flynn Ji</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>博客用的是Hexo框架下的开源主题Fexo。集成评论插件时出现了一些error。</p>
+<h2 id="Error：Not-Found"><a href="#Error：Not-Found" class="headerlink" title="Error：Not Found"></a>Error：Not Found</h2><p>在评论组件上方页面提示 Error: Not Found. 一般是由于repo填写错误，检查主题配置文件repo字段，即repo字段内容直接填写仓库名，例如：hexo_blog_comments，而不是<a href="https://github.com/fly9006/hexo_blog_comments" target="_blank" rel="noopener">https://github.com/fly9006/hexo_blog_comments</a></p>
+<h2 id="Error-Validation-Failed"><a href="#Error-Validation-Failed" class="headerlink" title="Error: Validation Failed"></a>Error: Validation Failed</h2><p>部分文章的评论区会报Error: Validation Failed,具体原因是由于 Github 限制labal长度不能超过 50引起的，该问题解决方案来自Gitalk项目仓Issues115，通过MD5加密ID来缩短labal长度。<br><a href="https://github.com/gitalk/gitalk/issues/102" title="issue" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/102</a></p>
+<p>解决方法如下：</p>
+<ul>
+<li><p>创建md5.min.js文件</p>
+<p>  ! function(n) {<br>  “use strict”;<br>  function t(n, t) {</p>
+<pre><code>var r = (65535 &amp; n) + (65535 &amp; t);
+return (n &gt;&gt; 16) + (t &gt;&gt; 16) + (r &gt;&gt; 16) &lt;&lt; 16 | 65535 &amp; r
+</code></pre><p>  }<br>  function r(n, t) {</p>
+<pre><code>return n &lt;&lt; t | n &gt;&gt;&gt; 32 - t
+</code></pre><p>  }<br>  function e(n, e, o, u, c, f) {</p>
+<pre><code>return t(r(t(t(e, n), t(u, f)), c), o)
+</code></pre><p>  }<br>  function o(n, t, r, o, u, c, f) {</p>
+<pre><code>return e(t &amp; r | ~t &amp; o, n, t, u, c, f)
+</code></pre><p>  }<br>  function u(n, t, r, o, u, c, f) {</p>
+<pre><code>return e(t &amp; o | r &amp; ~o, n, t, u, c, f)
+</code></pre><p>  }<br>  function c(n, t, r, o, u, c, f) {</p>
+<pre><code>return e(t ^ r ^ o, n, t, u, c, f)
+</code></pre><p>  }<br>  function f(n, t, r, o, u, c, f) {</p>
+<pre><code>return e(r ^ (t | ~o), n, t, u, c, f)
+</code></pre><p>  }<br>  function i(n, r) {</p>
+<pre><code>n[r &gt;&gt; 5] |= 128 &lt;&lt; r % 32, n[14 + (r + 64 &gt;&gt;&gt; 9 &lt;&lt; 4)] = r;
+var e, i, a, d, h, l = 1732584193,
+    g = -271733879,
+    v = -1732584194,
+    m = 271733878;
+for (e = 0; e &lt; n.length; e += 16) i = l, a = g, d = v, h = m, g = f(g = f(g = f(g = f(g = c(g = c(g = c(g = c(g = u(g = u(g = u(g = u(g = o(g = o(g = o(g = o(g, v = o(v, m = o(m, l = o(l, g, v, m, n[e], 7, -680876936), g, v, n[e + 1], 12, -389564586), l, g, n[e + 2], 17, 606105819), m, l, n[e + 3], 22, -1044525330), v = o(v, m = o(m, l = o(l, g, v, m, n[e + 4], 7, -176418897), g, v, n[e + 5], 12, 1200080426), l, g, n[e + 6], 17, -1473231341), m, l, n[e + 7], 22, -45705983), v = o(v, m = o(m, l = o(l, g, v, m, n[e + 8], 7, 1770035416), g, v, n[e + 9], 12, -1958414417), l, g, n[e + 10], 17, -42063), m, l, n[e + 11], 22, -1990404162), v = o(v, m = o(m, l = o(l, g, v, m, n[e + 12], 7, 1804603682), g, v, n[e + 13], 12, -40341101), l, g, n[e + 14], 17, -1502002290), m, l, n[e + 15], 22, 1236535329), v = u(v, m = u(m, l = u(l, g, v, m, n[e + 1], 5, -165796510), g, v, n[e + 6], 9, -1069501632), l, g, n[e + 11], 14, 643717713), m, l, n[e], 20, -373897302), v = u(v, m = u(m, l = u(l, g, v, m, n[e + 5], 5, -701558691), g, v, n[e + 10], 9, 38016083), l, g, n[e + 15], 14, -660478335), m, l, n[e + 4], 20, -405537848), v = u(v, m = u(m, l = u(l, g, v, m, n[e + 9], 5, 568446438), g, v, n[e + 14], 9, -1019803690), l, g, n[e + 3], 14, -187363961), m, l, n[e + 8], 20, 1163531501), v = u(v, m = u(m, l = u(l, g, v, m, n[e + 13], 5, -1444681467), g, v, n[e + 2], 9, -51403784), l, g, n[e + 7], 14, 1735328473), m, l, n[e + 12], 20, -1926607734), v = c(v, m = c(m, l = c(l, g, v, m, n[e + 5], 4, -378558), g, v, n[e + 8], 11, -2022574463), l, g, n[e + 11], 16, 1839030562), m, l, n[e + 14], 23, -35309556), v = c(v, m = c(m, l = c(l, g, v, m, n[e + 1], 4, -1530992060), g, v, n[e + 4], 11, 1272893353), l, g, n[e + 7], 16, -155497632), m, l, n[e + 10], 23, -1094730640), v = c(v, m = c(m, l = c(l, g, v, m, n[e + 13], 4, 681279174), g, v, n[e], 11, -358537222), l, g, n[e + 3], 16, -722521979), m, l, n[e + 6], 23, 76029189), v = c(v, m = c(m, l = c(l, g, v, m, n[e + 9], 4, -640364487), g, v, n[e + 12], 11, -421815835), l, g, n[e + 15], 16, 530742520), m, l, n[e + 2], 23, -995338651), v = f(v, m = f(m, l = f(l, g, v, m, n[e], 6, -198630844), g, v, n[e + 7], 10, 1126891415), l, g, n[e + 14], 15, -1416354905), m, l, n[e + 5], 21, -57434055), v = f(v, m = f(m, l = f(l, g, v, m, n[e + 12], 6, 1700485571), g, v, n[e + 3], 10, -1894986606), l, g, n[e + 10], 15, -1051523), m, l, n[e + 1], 21, -2054922799), v = f(v, m = f(m, l = f(l, g, v, m, n[e + 8], 6, 1873313359), g, v, n[e + 15], 10, -30611744), l, g, n[e + 6], 15, -1560198380), m, l, n[e + 13], 21, 1309151649), v = f(v, m = f(m, l = f(l, g, v, m, n[e + 4], 6, -145523070), g, v, n[e + 11], 10, -1120210379), l, g, n[e + 2], 15, 718787259), m, l, n[e + 9], 21, -343485551), l = t(l, i), g = t(g, a), v = t(v, d), m = t(m, h);
+return [l, g, v, m]
+</code></pre><p>  }</p>
+<p>  function a(n) {</p>
+<pre><code>var t, r = &quot;&quot;,
+    e = 32 * n.length;
+for (t = 0; t &lt; e; t += 8) r += String.fromCharCode(n[t &gt;&gt; 5] &gt;&gt;&gt; t % 32 &amp; 255);
+return r
+</code></pre><p>  }</p>
+<p>  function d(n) {</p>
+<pre><code>var t, r = [];
+for (r[(n.length &gt;&gt; 2) - 1] = void 0, t = 0; t &lt; r.length; t += 1) r[t] = 0;
+var e = 8 * n.length;
+for (t = 0; t &lt; e; t += 8) r[t &gt;&gt; 5] |= (255 &amp; n.charCodeAt(t / 8)) &lt;&lt; t % 32;
+return r
+</code></pre><p>  }</p>
+<p>  function h(n) {</p>
+<pre><code>return a(i(d(n), 8 * n.length))
+</code></pre><p>  }</p>
+<p>  function l(n, t) {</p>
+<pre><code>var r, e, o = d(n),
+    u = [],
+    c = [];
+for (u[15] = c[15] = void 0, o.length &gt; 16 &amp;&amp; (o = i(o, 8 * n.length)), r = 0; r &lt; 16; r += 1) u[r] = 909522486 ^ o[r], c[r] = 1549556828 ^ o[r];
+return e = i(u.concat(d(t)), 512 + 8 * t.length), a(i(c.concat(e), 640))
+</code></pre><p>  }</p>
+<p>  function g(n) {</p>
+<pre><code>var t, r, e = &quot;&quot;;
+for (r = 0; r &lt; n.length; r += 1) t = n.charCodeAt(r), e += &quot;0123456789abcdef&quot;.charAt(t &gt;&gt;&gt; 4 &amp; 15) + &quot;0123456789abcdef&quot;.charAt(15 &amp; t);
+return e
+</code></pre><p>  }<br>  function v(n) {</p>
+<pre><code>return unescape(encodeURIComponent(n))
+</code></pre><p>  }<br>  function m(n) {</p>
+<pre><code>return h(v(n))
+</code></pre><p>  }<br>  function p(n) {</p>
+<pre><code>return g(m(n))
+</code></pre><p>  }<br>  function s(n, t) {</p>
+<pre><code>return l(v(n), v(t))
+</code></pre><p>  }<br>  function C(n, t) {</p>
+<pre><code>return g(s(n, t))
+</code></pre><p>  }<br>  function A(n, t, r) {</p>
+<pre><code>return t ? r ? s(t, n) : C(t, n) : r ? m(n) : p(n)
+</code></pre><p>  }<br>  “function” == typeof define &amp;&amp; define.amd ? define(function() {</p>
+<pre><code>return A
+</code></pre><p>  }) : “object” == typeof module &amp;&amp; module.exports ? module.exports = A : n.md5 = A<br>  }(this);<br>  //# sourceMappingURL=md5.min.js.map</p>
+</li>
+<li><p>修改引入gitalk的js文件</p>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/14073259-8312ad41a692eeae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/11/26/hexo的常用命令/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+
+   
+      
+<!-- Gitalk评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/js/src/md5.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6ad7c2216ab535da0981',
+  clientSecret: 'c1f922d8ca04f27191e8b828ccf4385eb2a248b8',
+  repo: 'hexo_blog_comments',
+  owner: 'fly9006',
+  admin: ['fly9006'],
+  id: md5(location.pathname),
+  // facebook-like distraction free mode
+  distractionFreeMode: true
+})
+gitalk.render('git')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+   
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
