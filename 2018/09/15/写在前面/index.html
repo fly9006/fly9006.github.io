@@ -189,7 +189,7 @@
     <a class="hide pull-left" href="/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="hide pull-right" href="/">
+    <a class="show pull-right" href="/2018/11/26/我的2018阅读书单/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -199,7 +199,27 @@
 
 
    
-      <div class="git"></div>
+      
+<!-- Gitalk评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '6ad7c2216ab535da0981',
+  clientSecret: 'c1f922d8ca04f27191e8b828ccf4385eb2a248b8',
+  repo: 'https://github.com/fly9006/hexo_blog_comments',
+  owner: 'fly9006',
+  admin: ['fly9006'],
+  // facebook-like distraction free mode
+  distractionFreeMode: true
+})
+gitalk.render('git')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
    
 </div>
 
