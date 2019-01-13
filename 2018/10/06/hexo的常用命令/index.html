@@ -1,416 +1,338 @@
 <!DOCTYPE html>
-
-
-  <html class="light page-post">
-
-
+<html lang=en>
 <head>
-  <meta charset="utf-8">
-  
-  <title>hexo常用命令 | Flynn Ji</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  
-    <meta name="keywords" content="hexo," />
-  
-
-  <meta name="description" content="中文版的官方命令文档如下：https://hexo.io/zh-cn/docs/commands.html 简单做下总结笔记，方便日常查阅。 init新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。 $ hexo init [folder] 三种模式:  安全模式  在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。 $ h">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="中文版的官方命令文档如下：https://hexo.io/zh-cn/docs/commands.html 简单做下总结笔记，方便日常查阅。 init 新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。 1$ hexo init [folder] 三种模式:  安全模式  在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。 $">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo常用命令">
 <meta property="og:url" content="https://fly9006.github.io/2018/10/06/hexo的常用命令/index.html">
 <meta property="og:site_name" content="Flynn Ji">
-<meta property="og:description" content="中文版的官方命令文档如下：https://hexo.io/zh-cn/docs/commands.html 简单做下总结笔记，方便日常查阅。 init新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。 $ hexo init [folder] 三种模式:  安全模式  在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。 $ h">
+<meta property="og:description" content="中文版的官方命令文档如下：https://hexo.io/zh-cn/docs/commands.html 简单做下总结笔记，方便日常查阅。 init 新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。 1$ hexo init [folder] 三种模式:  安全模式  在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。 $">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-26T15:51:14.616Z">
+<meta property="og:updated_time" content="2019-01-13T14:46:00.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo常用命令">
-<meta name="twitter:description" content="中文版的官方命令文档如下：https://hexo.io/zh-cn/docs/commands.html 简单做下总结笔记，方便日常查阅。 init新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。 $ hexo init [folder] 三种模式:  安全模式  在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。 $ h">
-
-  
-
-  
-    <link rel="icon" href="/images/favicon.ico">
-  
-
-  <link href="/css/styles.css?v=c114cben" rel="stylesheet">
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
+<meta name="twitter:description" content="中文版的官方命令文档如下：https://hexo.io/zh-cn/docs/commands.html 简单做下总结笔记，方便日常查阅。 init 新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。 1$ hexo init [folder] 三种模式:  安全模式  在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。 $">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>hexo常用命令</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
 
 <body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/posts/">Writing</a></li>
+         
+          <li><a href="http://github.com/sergodeeva">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/10/25/Hexo主题-Fexo集成gitalk评论插件Error解决笔记/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/09/15/写在前面/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://fly9006.github.io/2018/10/06/hexo的常用命令/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&text=hexo常用命令"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&title=hexo常用命令"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&is_video=false&description=hexo常用命令"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=hexo常用命令&body=Check out this article: https://fly9006.github.io/2018/10/06/hexo的常用命令/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&title=hexo常用命令"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&title=hexo常用命令"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&title=hexo常用命令"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&title=hexo常用命令"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&name=hexo常用命令&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
 
-
-  
-    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
-  
-
-  <div class="post-header CENTER">
-   
-  <div class="toolbox">
-    <a class="toolbox-entry" href="/">
-      <span class="toolbox-entry-text">盒子</span>
-      <i class="icon-angle-down"></i>
-      <i class="icon-home"></i>
-    </a>
-    <ul class="list-toolbox">
-      
-        <li class="item-toolbox">
-          <a
-            class="ROUND_RECT"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            博客
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="ROUND_RECT"
-            href="/category/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            分类
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="ROUND_RECT"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            标签
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="ROUND_RECT"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            关于
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="ROUND_RECT"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  </div>
-
-
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">init</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">new</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">generate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">publish</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">server</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">deploy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">clean</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">list</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">9.</span> <span class="toc-text">version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">10.</span> <span class="toc-text">自定义配置文件的路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">11.</span> <span class="toc-text">显示草稿</span></a></li></ol>
+    </div>
+  </span>
 </div>
 
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        hexo常用命令
+    </h1>
 
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">Posts List</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#init"><span class="toc-text">init</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#new"><span class="toc-text">new</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#generate"><span class="toc-text">generate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#publish"><span class="toc-text">publish</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#server"><span class="toc-text">server</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#deploy"><span class="toc-text">deploy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#clean"><span class="toc-text">clean</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#list"><span class="toc-text">list</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#version"><span class="toc-text">version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义配置文件的路径"><span class="toc-text">自定义配置文件的路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#显示草稿"><span class="toc-text">显示草稿</span></a></li></ol>
-  </div>
 
 
-
-<div class="content content-post CENTER">
-   <article id="post-hexo的常用命令" class="article article-type-post" itemprop="blogPost">
-  <header class="article-header">
-    <h1 class="post-title">hexo常用命令</h1>
-
-    <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2018.10.06</span>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Flynn Ji</span>
       </span>
-
       
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Flynn Ji</span>
-        </span>
-      
-
-      
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-  </span>
-
+    <div class="postdate">
+        <time datetime="2018-10-06T03:32:41.000Z" itemprop="datePublished">2018-10-06</time>
+    </div>
 
 
       
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/hexo/">hexo</a>
+    </div>
 
-      
-      
+
     </div>
   </header>
+  
 
-  <div class="article-content">
-    
-      <p>中文版的官方命令文档如下：<a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/commands.html</a></p>
+  <div class="content" itemprop="articleBody">
+    <p>中文版的官方命令文档如下：https://hexo.io/zh-cn/docs/commands.html</p>
 <p>简单做下总结笔记，方便日常查阅。</p>
-<h1 id="init"><a href="#init" class="headerlink" title="init"></a>init</h1><p>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p>
-<pre><code>$ hexo init [folder]
-</code></pre><p>三种模式:</p>
+<h1>init</h1>
+<p>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure></p>
+<p>三种模式:</p>
 <ul>
 <li>安全模式</li>
 </ul>
 <p>在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。</p>
 <pre><code>$ hexo --safe
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>调试模式</li>
 </ul>
 <p>在终端中显示调试信息并记录到 debug.log。当您碰到问题时，可以尝试用调试模式重新执行一次，并 提交调试信息到 GitHub。</p>
 <pre><code>$ hexo --debug
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>简洁模式</li>
 </ul>
 <p>隐藏终端信息。</p>
 <pre><code>$ hexo --silent
-</code></pre><h1 id="new"><a href="#new" class="headerlink" title="new"></a>new</h1><p>新建文章</p>
+</code></pre>
+<h1>new</h1>
+<p>新建文章</p>
 <pre><code>$ hexo new [layout] &lt;title&gt;
-</code></pre><p>缩写</p>
+</code></pre>
+<p>缩写</p>
 <pre><code>$ hexo n &lt;title&gt;
-</code></pre><h1 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h1><p>将文章生成静态文件</p>
+</code></pre>
+<h1>generate</h1>
+<p>将文章生成静态文件</p>
 <pre><code>$ hexo generate
-</code></pre><p>缩写</p>
+</code></pre>
+<p>缩写</p>
 <pre><code>$ hexo g
-</code></pre><p>常用命令</p>
+</code></pre>
+<p>常用命令</p>
 <pre><code>$ hexo g
 $ hexo g --watch  #监视文件变动
-</code></pre><h1 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h1><p>发布草稿</p>
+</code></pre>
+<h1>publish</h1>
+<p>发布草稿</p>
 <pre><code>$ hexo publish [layout] &lt;filename&gt;
-</code></pre><p>缩写</p>
+</code></pre>
+<p>缩写</p>
 <pre><code>$ hexo p
-</code></pre><h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><p>启动服务器，默认本地访问地址：localhost:4000或127.0.0.1:4000</p>
+</code></pre>
+<h1>server</h1>
+<p>启动服务器，默认本地访问地址：localhost:4000或127.0.0.1:4000</p>
 <pre><code>$ hexo server
-</code></pre><p>缩写</p>
+</code></pre>
+<p>缩写</p>
 <pre><code>$ hexo s
-</code></pre><p>常用命令</p>
+</code></pre>
+<p>常用命令</p>
 <pre><code>$ hexo s  #Hexo回监视文件变动并自动更新，无须重启服务
 $ hexo s -s  #静态模式
 $ hexo s -p 8888  #指定访问端口
 $ hexo s -i 127.0.0.2  #指定ip
-</code></pre><h1 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h1><p>部署网站</p>
+</code></pre>
+<h1>deploy</h1>
+<p>部署网站</p>
 <pre><code>$ hexo deploy
-</code></pre><p>缩写</p>
+</code></pre>
+<p>缩写</p>
 <pre><code>$ hexo d
-</code></pre><p>常用命令</p>
+</code></pre>
+<p>常用命令</p>
 <pre><code>$ hexo g -d  #生成静态文件后部署
 $ hexo d -g  #同上
 $ hexo s -g
-</code></pre><h1 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h1><p>清除缓存文件和已生成的静态文件</p>
+</code></pre>
+<h1>clean</h1>
+<p>清除缓存文件和已生成的静态文件</p>
 <pre><code>$ hexo clean
-</code></pre><h1 id="list"><a href="#list" class="headerlink" title="list"></a>list</h1><p>列出网站的资料信息</p>
+</code></pre>
+<h1>list</h1>
+<p>列出网站的资料信息</p>
 <pre><code>$ hexo list &lt;type&gt;
-</code></pre><h1 id="version"><a href="#version" class="headerlink" title="version"></a>version</h1><p>显示当前hexo版本</p>
+</code></pre>
+<h1>version</h1>
+<p>显示当前hexo版本</p>
 <pre><code>$ hexo version
-</code></pre><h1 id="自定义配置文件的路径"><a href="#自定义配置文件的路径" class="headerlink" title="自定义配置文件的路径"></a>自定义配置文件的路径</h1><p>自定义配置文件的路径，执行后将不再使用 _config.yml。</p>
+</code></pre>
+<h1>自定义配置文件的路径</h1>
+<p>自定义配置文件的路径，执行后将不再使用 _config.yml。</p>
 <pre><code>$ hexo --config custom.yml
-</code></pre><h1 id="显示草稿"><a href="#显示草稿" class="headerlink" title="显示草稿"></a>显示草稿</h1><p>显示 source/_drafts 文件夹中的草稿文章。</p>
+</code></pre>
+<h1>显示草稿</h1>
+<p>显示 source/_drafts 文件夹中的草稿文章。</p>
 <pre><code>$ hexo --draft
 </code></pre>
-    
-  </div>
 
+  </div>
 </article>
 
 
-   
 
-   
-  <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2018/09/15/写在前面/">
-        <i class="icon icon-angle-left"></i>
-    </a>
-    <a class="show pull-right" href="/2018/10/25/Hexo主题-Fexo集成gitalk评论插件Error解决笔记/">
-        <i class="icon icon-angle-right"></i>
-    </a>
-  </div>
-
-
-
-
-
-   
-      
-<!-- Gitalk评论插件通用代码 -->
-<div id="git"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="/js/src/md5.min.js"></script>
-<script>
-const gitalk = new Gitalk({
-  clientID: '6ad7c2216ab535da0981',
-  clientSecret: 'c1f922d8ca04f27191e8b828ccf4385eb2a248b8',
-  repo: 'hexo_blog_comments',
-  owner: 'fly9006',
-  admin: ['fly9006'],
-  id: md5(location.pathname),
-  // facebook-like distraction free mode
-  distractionFreeMode: true
-})
-gitalk.render('git')
-</script>
-<!-- Gitalk代码结束 -->
-
-
-
-   
-</div>
-
-
-  <a id="backTop" class="back-top">
-    <i class="icon-angle-up"></i>
-  </a>
-
-
-
-
-  <div class="modal" id="modal">
-  <span id="cover" class="cover hide"></span>
-  <div id="modal-dialog" class="modal-dialog hide-dialog">
-    <div class="modal-header">
-      <span id="close" class="btn-close">Close</span>
     </div>
-    <hr>
-    <div class="modal-body">
-      <ul class="list-toolbox">
-        
-          <li class="item-toolbox">
-            <a
-              class="ROUND_RECT"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              博客
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="ROUND_RECT"
-              href="/category/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              分类
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="ROUND_RECT"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              标签
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="ROUND_RECT"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              关于
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="ROUND_RECT"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              搜索
-            </a>
-          </li>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/posts/">Writing</a></li>
+         
+          <li><a href="http://github.com/sergodeeva">Projects</a></li>
         
       </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">init</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">new</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">generate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">publish</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">server</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">deploy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">clean</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">list</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">9.</span> <span class="toc-text">version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">10.</span> <span class="toc-text">自定义配置文件的路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">11.</span> <span class="toc-text">显示草稿</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://fly9006.github.io/2018/10/06/hexo的常用命令/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&text=hexo常用命令"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&title=hexo常用命令"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&is_video=false&description=hexo常用命令"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=hexo常用命令&body=Check out this article: https://fly9006.github.io/2018/10/06/hexo的常用命令/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&title=hexo常用命令"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&title=hexo常用命令"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&title=hexo常用命令"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&title=hexo常用命令"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fly9006.github.io/2018/10/06/hexo的常用命令/&name=hexo常用命令&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
     </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
   </div>
 </div>
 
-
-
-  
-      <div class="fexo-comments comments-post">
     
-
-    
-
-    
-    
-
-    
-
-    
-    
-
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Flynn Ji
   </div>
-
-  
-
-  <script type="text/javascript">
-  function loadScript(url, callback) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript';
-
-    if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState == 'loaded' ||
-          script.readyState == 'complete') {
-          script.onreadystatechange = null;
-          callback();
-        }
-      };
-    } else { //Others
-      script.onload = function() {
-        callback();
-      };
-    }
-
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  }
-
-  window.onload = function() {
-    loadScript('/js/bundle.js?235683', function() {
-      // load success
-    });
-  }
-</script>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/posts/">Writing</a></li>
+         
+          <li><a href="http://github.com/sergodeeva">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
 
 </body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-37473492-6', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
