@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Flynn Ji">
+
+
+
+
+
+<title>youtube视频观看历史分析 | Flynn Ji&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Flynn Ji&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Flynn Ji&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">youtube视频观看历史分析</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Flynn Ji</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 5, 2020&nbsp;&nbsp;23:40:07</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>  前两天偶然翻阅了一位blogger的文章，内容是记录了他个人油管的观看记录分析过程。然后我也心血来潮，效仿一番，在本篇文章也简单分析下我自己再youtube的观看历史，分析维度和那位blogger的基本一致（抄袭了别人的idea，惭愧~），这是<a target="_blank" rel="noopener" href="https://wangyi.ai/blog/2019/12/22/er-ling-yi-jiu-nian-youtube-guan-kan-zong-jie/">原文链接</a>。</p>
+<p>  曾几何时，还不知道有fanqiang这回事的时候，在网络上观看视频资源都只能局限于几大视频平台。后来学会了用别人的飞机场，再后来学会了自己搭梯子。慢慢地才得以打开围墙外世界的一道道大门，而youtube（油管）就是其一。</p>
+<p>  从两年前开始，我已经很少使用国内的几大视频平台了，其中包括抖音，腾讯视频，爱奇艺，优酷土豆等等主流平台，但还是保留观看bilibili和网易新闻客户端的视频习惯。当然，电影、电视剧这些类型的“长视频”并不在本文所指的视频资源范围内。</p>
+<p>之所以开始放弃使用国内这些平台，主要是出于以下两个原因考虑：</p>
+<ul>
+<li><p>视频内容质量堪忧。伴随着近两年国内自媒体大火，大多平台的视频内容来源于这些水平参差不齐的自媒体人，所以可以想象视频内容的营养价值有多少水分。做自媒体门槛并不高，稍微有点拍摄设备和会点剪辑技能就能入门了。虽然我并未接触过自媒体相关的工作，但像拍摄视频这样丰富的内容承载媒介，要想输出足够有观看价值的内容，我觉得并不是一件简单的事情；</p>
+</li>
+<li><p>内容同质化严重。这个不用多说了，互相抄袭idea、一窝蜂抢舆论热点、甚至于直接照搬他人视频等现象太多了；</p>
+</li>
+</ul>
+<p>  截至目前，油管算是我视频资源观看量最大的平台了，因为油管视频内容丰富，总能找到感兴趣的video或channel。以下篇幅大致记录了在分析过程中使用到的一些主要工具，以及有几个基于不同分析维度的svg图表。</p>
+<h4 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h4><ul>
+<li><p>Python3。用于编写获取视频信息、过滤并保存待分析数据、以及生成可视化图表的脚本，当然完全可以使用其他语言来完成这部分工作，但whatever，毕竟人生苦短，我用Python；[狗头]~</p>
+</li>
+<li><p>sqlite3。用于保存过滤后的待分析数据，做数据的持久化是为了方便后面生成可视化图表；</p>
+</li>
+<li><p>chrome。用于渲染展示svg格式的图表，当然也可以使用其他可展示svg格式图表的工具；</p>
+</li>
+</ul>
+<h4 id="准备观看历史数据"><a href="#准备观看历史数据" class="headerlink" title="准备观看历史数据"></a>准备观看历史数据</h4><ul>
+<li>在谷歌提供的此工具页面可以导出在油管的视频观看历史数据；链接：<a target="_blank" rel="noopener" href="https://takeout.google.com/settings/takeout">Google Tokeout</a></li>
+<li>前面获取的观看历史数据只是一些基础数据，还需要另外获取每个视频的其他属性，这样才可以有更多维度做分析，有个开源库<a target="_blank" rel="noopener" href="http://www.youtube-dl.org/">youtube-dl</a> 提供了获取油管视频更多属性信息的接口，在此库基础上我们就可以做更多感兴趣维度的分析了；</li>
+</ul>
+<h4 id="感兴趣的几个分析维度"><a href="#感兴趣的几个分析维度" class="headerlink" title="感兴趣的几个分析维度"></a>感兴趣的几个分析维度</h4><ul>
+<li><p>2019年每个月观看的视频量情况</p>
+</li>
+<li><p>2019年每天24小时的视频观看量的分布情况</p>
+</li>
+<li><p>观看量最多的前八个channel及其视频观看量；</p>
+</li>
+<li><p>观看的视频时间长度的分布情况；</p>
+</li>
+</ul>
+<h4 id="基于sqlite3数据库的数据表创建"><a href="#基于sqlite3数据库的数据表创建" class="headerlink" title="基于sqlite3数据库的数据表创建"></a>基于sqlite3数据库的数据表创建</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`channel`</span> (</span><br><span class="line">   <span class="string">&quot;channel_id&quot;</span> <span class="built_in">TEXT</span>  <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">   <span class="string">&quot;name&quot;</span> <span class="built_in">TEXT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   <span class="string">&quot;view_count&quot;</span> <span class="built_in">INTEGER</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`video`</span> (</span><br><span class="line">   <span class="string">&quot;video_id&quot;</span> <span class="built_in">TEXT</span>  <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">   <span class="string">&quot;title&quot;</span> <span class="built_in">TEXT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   <span class="string">&quot;video_url&quot;</span> <span class="built_in">TEXT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   <span class="string">&quot;channel_id&quot;</span> <span class="built_in">TEXT</span>  <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   <span class="string">&quot;duration&quot;</span> <span class="built_in">INTEGER</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`history`</span> (</span><br><span class="line">   <span class="string">&quot;history_id&quot;</span> <span class="built_in">INTEGER</span> PRIMARY <span class="keyword">KEY</span> AUTOINCREMENT,</span><br><span class="line">   <span class="string">&quot;video_id&quot;</span> <span class="built_in">TEXT</span>  <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   <span class="string">&quot;timestamp&quot;</span> <span class="built_in">TEXT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="用于清洗、保存待分析数据的python脚本"><a href="#用于清洗、保存待分析数据的python脚本" class="headerlink" title="用于清洗、保存待分析数据的python脚本"></a>用于清洗、保存待分析数据的python脚本</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> youtube_dl</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> dateutil <span class="keyword">import</span> parser</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">logging.getLogger().setLevel(logging.INFO)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">db_conn = sqlite3.connect(database=os.path.join(os.path.dirname(__file__), <span class="string">&quot;youtube.db&quot;</span>))</span><br><span class="line">video_base_url = <span class="string">&quot;http://www.youtube.com/watch?v=&#123;&#125;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_channel</span>(<span class="params">channel_id, channel_name</span>):</span></span><br><span class="line">    c = db_conn.cursor()</span><br><span class="line">    c.execute(<span class="string">&quot;INSERT OR IGNORE INTO channel (channel_id, name) VALUES (?, ?)&quot;</span>, (channel_id, channel_name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_channel_view_count</span>(<span class="params">channel_id, view_count</span>):</span></span><br><span class="line">    c = db_conn.cursor()</span><br><span class="line">    c.execute(<span class="string">&quot;UPDATE channel SET view_count=? WHERE channel_id=? &quot;</span>, (view_count, channel_id))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_video_record</span>(<span class="params">video_id, title, video_url, channel_id, duration</span>):</span></span><br><span class="line">    c = db_conn.cursor()</span><br><span class="line">    c.execute(<span class="string">&quot;INSERT OR IGNORE INTO video (video_id, title, video_url, channel_id, duration) VALUES (?, ?, ?, ?, ?)&quot;</span>, (video_id, title, video_url, channel_id, duration))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_history</span>(<span class="params">video_id, timestamp</span>):</span></span><br><span class="line">    c = db_conn.cursor()</span><br><span class="line">    c.execute(<span class="string">&quot;INSERT OR IGNORE INTO history (video_id, timestamp) VALUES (?, ?)&quot;</span>, (video_id, timestamp))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_channel_id</span>(<span class="params">url: str</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> url:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line">    pattern = re.compile(<span class="string">r&quot;^\S+/channel/(\S+)$&quot;</span>)</span><br><span class="line">    res = re.findall(pattern, url)</span><br><span class="line">    <span class="keyword">if</span> res:</span><br><span class="line">        <span class="keyword">return</span> res[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_video_id</span>(<span class="params">url: str</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> url:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line">    pattern = re.compile(<span class="string">r&quot;^\S+/watch\?v=(\S+)$&quot;</span>)</span><br><span class="line">    res = re.findall(pattern, url)</span><br><span class="line">    <span class="keyword">if</span> res:</span><br><span class="line">        <span class="keyword">return</span> res[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_from_ydl</span>(<span class="params">ydl: youtube_dl.YoutubeDL, video_url: str, cache_file_path: str</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        result = ydl.extract_info(video_url, download=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        logging.exception(str(e))</span><br><span class="line">        result = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(cache_file_path, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        json.dump(result, f)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_duration</span>(<span class="params">ydl: youtube_dl.YoutubeDL, video_id: str</span>):</span></span><br><span class="line">    video_url = video_base_url.format(video_id)</span><br><span class="line">    cache_file_path = os.path.join(os.path.dirname(__file__), <span class="string">&quot;cache&quot;</span>, video_id + <span class="string">&quot;.json&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(cache_file_path):</span><br><span class="line">        logging.info(<span class="string">&quot;download video info: &#123;&#125;&quot;</span>.format(cache_file_path))</span><br><span class="line">        download_from_ydl(ydl, video_url, cache_file_path)</span><br><span class="line"></span><br><span class="line">    duration = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">with</span> open(cache_file_path, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = json.load(f)</span><br><span class="line">        duration = data.get(<span class="string">&quot;duration&quot;</span>) <span class="keyword">if</span> data <span class="keyword">else</span> <span class="number">-1</span></span><br><span class="line">    <span class="keyword">return</span> duration</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">handle</span>(<span class="params">history: dict, ydl: youtube_dl.YoutubeDL, channel_view_counts: dict</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;subtitles&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> history <span class="keyword">or</span> <span class="string">&quot;titleUrl&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> history:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    video_id = get_video_id(history.get(<span class="string">&quot;titleUrl&quot;</span>))</span><br><span class="line">    title = history.get(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;Watched &quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">    logging.info(<span class="string">&quot;current item title: &#123;&#125;&quot;</span>.format(title))</span><br><span class="line"></span><br><span class="line">    channel_id = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> subtitle <span class="keyword">in</span> history[<span class="string">&quot;subtitles&quot;</span>]:</span><br><span class="line">        channel_id = get_channel_id(subtitle.get(<span class="string">&quot;url&quot;</span>))                </span><br><span class="line">        add_channel(channel_id, subtitle.get(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">        channel_view_counts[channel_id] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    duration = get_duration(ydl, video_id)</span><br><span class="line">    add_video_record(video_id, title, history.get(<span class="string">&quot;titleUrl&quot;</span>), channel_id, duration)</span><br><span class="line"></span><br><span class="line">    timestamp = int(parser.parse(history[<span class="string">&quot;time&quot;</span>]).timestamp())</span><br><span class="line">    add_history(video_id, timestamp)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_add_channel_view_count</span>(<span class="params">channel_count: dict</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> channel_count:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> channel_id, view_count <span class="keyword">in</span> channel_count.items():</span><br><span class="line">        logging.info(<span class="string">&quot;current channel id:&#123;&#125;, view count:&#123;&#125;&quot;</span>.format(channel_id, str(view_count)))</span><br><span class="line">        update_channel_view_count(channel_id, view_count)</span><br><span class="line">    db_conn.commit()</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_download_video_info</span>(<span class="params">ydl: youtube_dl.YoutubeDL, video_id: str</span>):</span></span><br><span class="line">    video_url = video_base_url.format(video_id)</span><br><span class="line">    cache_file_path = os.path.join(os.path.dirname(__file__), <span class="string">&quot;cache&quot;</span>, video_id + <span class="string">&quot;.json&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(cache_file_path):</span><br><span class="line">        logging.info(<span class="string">&quot;batch download video info: &#123;&#125;&quot;</span>.format(cache_file_path))</span><br><span class="line">        download_from_ydl(ydl, video_url, cache_file_path)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">    logging.info(<span class="string">&quot;finish batch download&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    logging.info(<span class="string">&quot;========= start work =========&quot;</span>)</span><br><span class="line">    ydl = youtube_dl.YoutubeDL(&#123;<span class="string">&quot;outtmpl&quot;</span>: <span class="string">&quot;%(id)s%(ext)s&quot;</span>&#125;)</span><br><span class="line">    threads = []</span><br><span class="line"></span><br><span class="line">    history_file_path = os.path.join(os.path.dirname(__file__), <span class="string">&quot;history.json&quot;</span>)</span><br><span class="line">    <span class="keyword">with</span> open(history_file_path, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        historys = json.load(f)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> history <span class="keyword">in</span> historys:</span><br><span class="line">        video_id = get_video_id(history.get(<span class="string">&quot;titleUrl&quot;</span>))</span><br><span class="line">        t = threading.Thread(target=batch_download_video_info, args=(ydl, video_id))</span><br><span class="line">        t.start()</span><br><span class="line">        threads.append(t)</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</span><br><span class="line">        t.join()</span><br><span class="line"></span><br><span class="line">    channel_view_counts = defaultdict(int)</span><br><span class="line">    <span class="keyword">for</span> history <span class="keyword">in</span> historys:</span><br><span class="line">        handle(history, ydl, channel_view_counts)</span><br><span class="line">        db_conn.commit()</span><br><span class="line"></span><br><span class="line">    batch_add_channel_view_count(channel_view_counts)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    db_conn.close()</span><br><span class="line">    logging.info(<span class="string">&quot;========= finish work =========&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h4 id="用于输出svg格式图表的python脚本"><a href="#用于输出svg格式图表的python脚本" class="headerlink" title="用于输出svg格式图表的python脚本"></a>用于输出svg格式图表的python脚本</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> pplt</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">db_conn = sqlite3.connect(database=os.path.join(os.path.dirname(__file__), <span class="string">&quot;youtube.db&quot;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_yearly_data</span>():</span></span><br><span class="line">    x, y = [], []</span><br><span class="line">    c = db_conn.cursor()</span><br><span class="line">    c.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    SELECT</span></span><br><span class="line"><span class="string">        STRFTIME(&#x27;%Y&#x27;, DATE(timestamp, &#x27;unixepoch&#x27;)) AS year,</span></span><br><span class="line"><span class="string">        COUNT(1)</span></span><br><span class="line"><span class="string">    FROM</span></span><br><span class="line"><span class="string">        history</span></span><br><span class="line"><span class="string">    GROUP BY 1;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    result = c.fetchall()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> result:</span><br><span class="line">        x.append(item[<span class="number">0</span>])</span><br><span class="line">        y.append(item[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    pplt.bar(x, y)</span><br><span class="line">    pplt.xlabel(<span class="string">&quot;Year&quot;</span>)</span><br><span class="line">    pplt.ylabel(<span class="string">&quot;Video&quot;</span>)</span><br><span class="line">    pplt.title(<span class="string">&quot;Yearly Watched Videos&quot;</span>)</span><br><span class="line">    pplt.legend()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_watch_hour</span>():</span></span><br><span class="line">    x, y = [], []</span><br><span class="line">    c = db_conn.cursor()</span><br><span class="line">    c.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    SELECT</span></span><br><span class="line"><span class="string">        STRFTIME(&#x27;%Y&#x27;, DATETIME(timestamp, &#x27;unixepoch&#x27;, &#x27;localtime&#x27;)) AS year,</span></span><br><span class="line"><span class="string">        STRFTIME(&#x27;%H&#x27;, DATETIME(timestamp, &#x27;unixepoch&#x27;, &#x27;localtime&#x27;)) AS hour,</span></span><br><span class="line"><span class="string">        COUNT(1)</span></span><br><span class="line"><span class="string">    FROM history GROUP BY 1, 2 HAVING year = &#x27;2019&#x27;;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    result = c.fetchall()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> result:</span><br><span class="line">        x.append(int(item[<span class="number">1</span>]))</span><br><span class="line">        y.append(int(item[<span class="number">2</span>]))</span><br><span class="line"></span><br><span class="line">    pplt.bar(x, y)</span><br><span class="line">    pplt.xlabel(<span class="string">&quot;Hour&quot;</span>)</span><br><span class="line">    pplt.ylabel(<span class="string">&quot;Video&quot;</span>)</span><br><span class="line">    pplt.title(<span class="string">&quot;Watched In Hour (2019) &quot;</span>)</span><br><span class="line">    pplt.legend()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_top_five</span>():</span></span><br><span class="line">    x, y = [], []</span><br><span class="line">    c = db_conn.cursor()</span><br><span class="line">    c.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    SELECT</span></span><br><span class="line"><span class="string">        name,</span></span><br><span class="line"><span class="string">        view_count</span></span><br><span class="line"><span class="string">    FROM channel ORDER BY view_count DESC LIMIT 8;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    result = c.fetchall()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> result:</span><br><span class="line">        x.append(str(item[<span class="number">0</span>]).encode(encoding=<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">        y.append(int(item[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    pplt.bar(x, y)</span><br><span class="line">    pplt.ylim(<span class="number">0</span>, <span class="number">120</span>)</span><br><span class="line">    pplt.xlabel(<span class="string">&quot;Channel Name&quot;</span>)</span><br><span class="line">    pplt.ylabel(<span class="string">&quot;View Count&quot;</span>)</span><br><span class="line">    pplt.title(<span class="string">&quot;Channel View Count (2019) &quot;</span>)</span><br><span class="line">    pplt.legend()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_video_length</span>():</span></span><br><span class="line"></span><br><span class="line">    x, y = [], []</span><br><span class="line"></span><br><span class="line">    c = db_conn.cursor()</span><br><span class="line">    c.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    SELECT </span></span><br><span class="line"><span class="string">        duration / 60, COUNT(1) </span></span><br><span class="line"><span class="string">    FROM video </span></span><br><span class="line"><span class="string">    WHERE duration &gt; 0</span></span><br><span class="line"><span class="string">    GROUP BY 1;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    result = c.fetchall()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> result:</span><br><span class="line">        x.append(int(item[<span class="number">0</span>]))</span><br><span class="line">        y.append(int(item[<span class="number">1</span>])) </span><br><span class="line"></span><br><span class="line">    pplt.plot(x, y)</span><br><span class="line">    pplt.xlim(<span class="number">0</span>, <span class="number">120</span>)</span><br><span class="line">    pplt.xlabel(<span class="string">&quot;Video Length (Unit: Minute)&quot;</span>)</span><br><span class="line">    pplt.ylabel(<span class="string">&quot;Video Count&quot;</span>)</span><br><span class="line">    pplt.title(<span class="string">&quot;Video Length Distribution&quot;</span>)</span><br><span class="line">    pplt.legend()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line"></span><br><span class="line">    pplt.figure(figsize=(<span class="number">12</span>, <span class="number">6</span>))</span><br><span class="line">    pplt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>]=[<span class="string">&#x27;SimHei&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    pplt.subplot(<span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">    plot_yearly_data()</span><br><span class="line"></span><br><span class="line">    pplt.subplot(<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">    plot_watch_hour()</span><br><span class="line"></span><br><span class="line">    pplt.subplots_adjust(wspace=<span class="number">0.2</span>, hspace=<span class="number">0.8</span>)</span><br><span class="line">    filepath = os.path.join(os.path.dirname(__file__), <span class="string">&quot;plot&quot;</span>, <span class="string">&quot;graghs_one.svg&quot;</span>)</span><br><span class="line">    pplt.savefig(filepath, format=<span class="string">&quot;svg&quot;</span>)</span><br><span class="line">    pplt.clf()</span><br><span class="line"></span><br><span class="line">    pplt.subplot(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">    plot_top_five()</span><br><span class="line">    filepath = os.path.join(os.path.dirname(__file__), <span class="string">&quot;plot&quot;</span>, <span class="string">&quot;graghs_two.svg&quot;</span>)</span><br><span class="line">    pplt.savefig(filepath, format=<span class="string">&quot;svg&quot;</span>)</span><br><span class="line">    pplt.clf()</span><br><span class="line"></span><br><span class="line">    pplt.subplot(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">    plot_video_length()</span><br><span class="line"></span><br><span class="line">    filepath = os.path.join(os.path.dirname(__file__), <span class="string">&quot;plot&quot;</span>, <span class="string">&quot;graghs_three.svg&quot;</span>)</span><br><span class="line">    pplt.savefig(filepath, format=<span class="string">&quot;svg&quot;</span>)</span><br><span class="line"></span><br><span class="line">    db_conn.commit()</span><br><span class="line">    db_conn.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h4 id="可视化图表展示及分析"><a href="#可视化图表展示及分析" class="headerlink" title="可视化图表展示及分析"></a>可视化图表展示及分析</h4><p><img src="/2020/01/05/python/180449ff-325f-4b08-b233-8499190a05bf/graghs_one.svg" alt="这是代替图片的文字，随便写"></p>
+<p>图二数据可以看出，每天的观看时间主要集中分布在三个时间段。中午13点左右是因为上班的午休时间，吃完饭准备午睡前总会喜欢看上几部视频。另外一个比较突出的是晚上12点时间段，侧面可以看出自己的作息时间还算是比较晚的，希望在未来的一年在作息习惯上自己能有所改善。</p>
+<p><img src="/2020/01/05/python/180449ff-325f-4b08-b233-8499190a05bf/graghs_two.svg" alt="这是代替图片的文字，随便写"></p>
+<p>  图三为观看油管视频以来观看数量排前八的channel，大致涵盖了科普、潮流、游戏、电影这几个内容领域，这个名单大致能体现最近一段时间我比较感兴趣的不同内容领域的channel。</p>
+<p><img src="/2020/01/05/python/180449ff-325f-4b08-b233-8499190a05bf/graghs_three.svg" alt="这是代替图片的文字，随便写"></p>
+<p>  图四可以看出观看过的视频大部分分布在20分钟以下，其中10分钟长度左右的视频数量占比最大。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li><p>相比国内那些发展还未成熟的视频平台，油管能让我汲取到更多有价值的知识，获取到更多有用的资讯，所以未来我还会一直保持使用油管的习惯；</p>
+</li>
+<li><p>这次搜集到的数据其实还能用来做更多其他有趣的维度分析，例如看过的视频标签分布情况、视频热度分布情况、点赞最多的视频名单、dislike最多的视频名单等等。这次先点到为止，留些TODO下次来完成；</p>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Flynn Ji</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://fly9006.github.io/2020/01/05/python/180449ff-325f-4b08-b233-8499190a05bf/">https://fly9006.github.io/2020/01/05/python/180449ff-325f-4b08-b233-8499190a05bf/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python/"># python</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/29/python/9582e008-73d6-41c7-8456-d619555849f1/">the_zen_of_python</a>
+            
+            
+            <a class="next" rel="next" href="/2018/11/26/recommend-book/a93ccad9-bd9d-4124-801e-0d8e41ba278c/">在漫长的旅途中</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Flynn Ji | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
