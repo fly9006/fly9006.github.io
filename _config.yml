@@ -74,6 +74,7 @@ category_map:
     笔记: note
     荐书: recommend_book
     心得: feeling
+    数据库: database
 tag_map:
 
 # Metadata elements
