@@ -1,7 +1,9 @@
 ---
 title: hexo常用命令
 date: 2018-10-06 11:32:41
-tags: Hexo, 教程
+tags: 
+- Hexo
+- 笔记
 categories: Hexo
 id: 10f38775-d3ba-4e88-a8dc-9842ff5f114e
 ---
