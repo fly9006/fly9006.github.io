@@ -12,7 +12,7 @@
 
 
 
-<title>无题 | Flynn Ji&#39;s Blog</title>
+<title>Dremio数据湖引擎（一）：简介 | Flynn Ji&#39;s Blog</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">无题</h1>
+            <h1 class="post-title">Dremio数据湖引擎（一）：简介</h1>
             
                 <div class="post-meta">
                     
@@ -182,7 +182,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">September 15, 2018&nbsp;&nbsp;0:51:39</a>
+                        Date: <a href="#">September 26, 2019&nbsp;&nbsp;21:12:39</a>
                         </span>
                     
                     
@@ -191,8 +191,35 @@
         </header>
 
         <div class="post-content">
-            <h3 id="懒癌患者"><a href="#懒癌患者" class="headerlink" title="懒癌患者"></a>懒癌患者</h3><p>花了点时间用Hexo搭了这个简陋到不行的静态blog。 因为工作忙没时间吧，反正就是一直想做的这件事一直拖着。 也是因为码字大多时间下都算是蛮枯燥无聊的事情吧，所以希望能坚持下去多码几个字咯。</p>
-<p><img src="/2018/09/15/feeling/a0273356-1b4d-4a21-bb66-54c288648c69/wallhaven.png" alt="这是代替图片的文字，随便写"></p>
+            <p>在进入主题前，先聊下数据湖这个概念。百度百科中对该名词有如下解释：</p>
+<p><strong><em>数据湖或hub的概念最初是由大数据厂商提出的，表面上看，数据都是承载在基于可向外扩展的HDFS廉价存储硬件之上的。但数据量越大，越需要各种不同种类的存储。最终，所有的企业数据都可以被认为是大数据，但并不是所有的企业数据都是适合存放在廉价的HDFS集群之上的。</em></strong></p>
+<p>&emsp;&emsp;说白了，数据湖的意思就是将不同存储类型、不同种类的数据汇聚在一起，例如在一个存储集群中分别有MySQL、Mongodb、s3等等数仓数据，这个存储集群统一对外就是一个数据湖了。</p>
+<p>&emsp;&emsp;博主所在的项目最近在技术演进中引入了近几年悄然火热的数据湖引擎—Dremio。接下来将通过文章总结下自己对Dremio的理解。</p>
+<p>&emsp;&emsp;Dremio是新一代的数据湖引擎，它通过直接在云数据湖存储中进行实时的、交互式的查询来释放数据价值。其官网首页第一句话就能很好诠释Dremio真正想要做的事情。</p>
+<p><strong><em>“Set Your Data Free”</em></strong></p>
+<p><strong><em>“释放你的数据”</em></strong></p>
+<p>Dremio有以下几个主要的特点：</p>
+<ul>
+<li>快速的数据查询</li>
+<li>自助式服务语义层</li>
+<li>灵活并且基于开源技术</li>
+<li>强大的JOIN性能</li>
+</ul>
+<p>根据对Dremio官方Doc的研读和自己的一些项目实践，我挑选了以下Dremio的技术特点，用来展示Dremio的独特：</p>
+<h3 id="快速的数据查询"><a href="#快速的数据查询" class="headerlink" title="快速的数据查询"></a>快速的数据查询</h3><p>&emsp;&emsp;在Dremio中，查询数据是直达数据湖存储的，无论数据是存储在S3、ADLS、Hadoop、MySQL、Mongodb等载体上。Dremio使用了包括不限于以下技术来加速每次的查询：</p>
+<ul>
+<li>Data Reflections</li>
+<li>Columnar Cloud Cache (C3) </li>
+<li>Predictive Pipelining work alongside Apache Arrow</li>
+</ul>
+<p><img src="/2019/09/26/Dremio/3729a742-fb41-4777-babc-75ae80ab14ec/fast-queries.png" alt="这是代替图片的文字，随便写"></p>
+<h3 id="使用Predictive-Pipelining和Columnar-Cloud-Cache（C3）技术加速数据读取"><a href="#使用Predictive-Pipelining和Columnar-Cloud-Cache（C3）技术加速数据读取" class="headerlink" title="使用Predictive Pipelining和Columnar Cloud Cache（C3）技术加速数据读取"></a>使用Predictive Pipelining和Columnar Cloud Cache（C3）技术加速数据读取</h3><p>Dremio的Predictive Pipelining技术使得来自数据源的数据只有在执行引擎真正需要到时才会去拉取，这个做法能显著降低引擎等待数据的时间成本。同样地，C3技术则是会自动地在数据存取时将数据缓存到本地的NVMe存储载体，使得查询访问数据湖中的数据能有NVMe存取速度级别的表现。</p>
+<h3 id="为云而建造的现代化执行引擎"><a href="#为云而建造的现代化执行引擎" class="headerlink" title="为云而建造的现代化执行引擎"></a>为云而建造的现代化执行引擎</h3><p>Dremio的执行引擎是建立在Apache Arrow及其生态技术上的，一个Dremio集群能够根据存储数据的体量规模弹性伸缩。</p>
+<h3 id="Data-Reflections-能够更高效查询速度的开关"><a href="#Data-Reflections-能够更高效查询速度的开关" class="headerlink" title="Data Reflections - 能够更高效查询速度的开关"></a>Data Reflections - 能够更高效查询速度的开关</h3><p>通过在Dremio提供的客户端页面的几下点击，就能够创建反射，反射是一种物理层面上对数据结构的优化，能够加速各种查询模式，根据你的需要可以创建任意数量的反射，Dremio会隐形并自动地在查询计划中合并反射，并保证查询到最新数据。</p>
+<h3 id="Arrow-Flight-以1000x的倍速移动数据"><a href="#Arrow-Flight-以1000x的倍速移动数据" class="headerlink" title="Arrow Flight - 以1000x的倍速移动数据"></a>Arrow Flight - 以1000x的倍速移动数据</h3><p>AF被设计出来是用于取代处理小规模数据的ODBC和JDBC协议，AF在高速、分布式传输协议的基础上，为Dremio和应用的数据传输提供了1000x倍速度提升的吞吐。</p>
+<h3 id="自助式服务语义层"><a href="#自助式服务语义层" class="headerlink" title="自助式服务语义层"></a>自助式服务语义层</h3><p>Dremio提供了一个应用安全和商业意义的抽象层，以支持用户能够探索数据，以及派生出新的虚拟数据集。</p>
+<p><img src="/2019/09/26/Dremio/3729a742-fb41-4777-babc-75ae80ab14ec/semantic-layer.png"></p>
+<h3 id="可自定义化的语义抽象层"><a href="#可自定义化的语义抽象层" class="headerlink" title="可自定义化的语义抽象层"></a>可自定义化的语义抽象层</h3><p>Dremio的语义层是一个能够索引出所有用户元数据的集成化、可搜索的目录。在此语义层上，虚拟数据集以及空间构成了语义层，并且都是能够倍索引和搜索的。</p>
 
         </div>
 
@@ -207,7 +234,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://fly9006.github.io/2018/09/15/feeling/a0273356-1b4d-4a21-bb66-54c288648c69/">https://fly9006.github.io/2018/09/15/feeling/a0273356-1b4d-4a21-bb66-54c288648c69/</a></span>
+                        <span><a href="https://fly9006.github.io/2019/09/26/Dremio/3729a742-fb41-4777-babc-75ae80ab14ec/">https://fly9006.github.io/2019/09/26/Dremio/3729a742-fb41-4777-babc-75ae80ab14ec/</a></span>
                     </p>
                 
                 
@@ -226,7 +253,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E5%BF%83%E5%BE%97/"># 心得</a>
+                        <a href="/tags/Dremio/"># Dremio</a>
                     
                         
                 </span>
@@ -239,8 +266,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2018/10/06/hexo/10f38775-d3ba-4e88-a8dc-9842ff5f114e/">hexo常用命令</a>
+                <a class="prev" rel="prev" href="/2020/01/05/python/180449ff-325f-4b08-b233-8499190a05bf/">youtube视频观看历史分析</a>
             
+            
+            <a class="next" rel="next" href="/2018/11/26/recommend-book/a93ccad9-bd9d-4124-801e-0d8e41ba278c/">在漫长的旅途中</a>
             
         </section>
 
