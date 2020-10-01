@@ -1,5 +1,5 @@
 ---
-title: Dremio数据湖引擎（二）：在win10环境下的安装使用
+title: Dremio数据湖引擎（二）：在win10环境下的安装部署
 date: 2019-09-28 00:51:39
 tags: 
 - Dremio
@@ -13,8 +13,9 @@ id: 29c5c69a-f6a1-4b89-9b43-81c9b11d56b0
 
 
 - 环境准备
-  - win10环境下的Docker容器服务
-
+  
+- win10环境下的Docker容器服务
+  
 - 拉取dremio-oss的docker镜像
 
   这里拉取下来的社区版本的Dremio镜像，商业版本的Dremio需要联系Dremio官方了。当然，作为个人开发使用，社区版本的Dremio已完全够用了。
@@ -57,13 +58,31 @@ id: 29c5c69a-f6a1-4b89-9b43-81c9b11d56b0
 
   ![这是代替图片的文字，随便写](sample2.png)
 
+- 选择其中一个文件，点击文件名旁边的小加号复制文件的访问路径，然后到查询编辑器执行类似以下的查询SQL，但是此时会抛出错误，Dremio提示找不到此文件
 
+  ```sql
+  select * from Samples."samples.dremio.com"."SF weather 2018-2019.csv"
+  ```
 
+  ![](sample3.jpg)
 
+- 其实原因不难找，Dremio引擎其实也是通过类似其他数据库中的元数据机制来管理数据集的，只需要让我们要查询数据的文件注册到Dremio的元数据中就可以正常查询了。
 
+  通过以下SQL可以查询到Dremio当前已知的元数据
 
+  ```sql
+  select * from INFORMATION_SCHEMA."TABLES"
+  ```
 
+  通过点击如下图按钮，将文件转换为指定的文件格式，就会将文件注册到Dremio的元数据中
 
+  ![](sample4.jpg)
+
+  再回到查询器页面执行查询SQL，就能正常查询出数据了
+
+  ![](sample5.jpg)
+
+&emsp;&emsp;到这里就算完成了Dremio的基本部署，并能简单使用Dremio提供的内置数据源查询到数据。
 
 
 
