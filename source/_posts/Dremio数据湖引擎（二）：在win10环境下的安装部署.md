@@ -10,13 +10,11 @@ id: 29c5c69a-f6a1-4b89-9b43-81c9b11d56b0
 
 &emsp;&emsp;由于博主日常使用的OS为windows10，故本文将简单展示如何在win10基于Docker容器安装部署Dremio。另外，Dremio的官网也给出诸如AWS版本、Azure版本等的安装部署包，有兴趣的话可通过以下链接前往了解：[dremio deploy](https://www.dremio.com/deploy/)
 
+### 环境准备
 
-
-- 环境准备
-  
 - win10环境下的Docker容器服务
   
-- 拉取dremio-oss的docker镜像
+### 拉取dremio-oss的docker镜像
 
   这里拉取下来的社区版本的Dremio镜像，商业版本的Dremio需要联系Dremio官方了。当然，作为个人开发使用，社区版本的Dremio已完全够用了。
 
@@ -24,7 +22,7 @@ id: 29c5c69a-f6a1-4b89-9b43-81c9b11d56b0
   docker pull dremio/dremio-oss
   ```
 
-- 单节点Dremio服务的部署
+### 单节点Dremio服务的部署
 
   ```shell
   docker run -p 9047:9047 -p 31010:31010 -p 45678:45678 dremio/dremio-oss
