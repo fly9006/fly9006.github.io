@@ -12,7 +12,7 @@
 
 
 
-<title>Dremio数据湖引擎（二）：在win10环境下的安装使用 | Flynn Ji&#39;s Blog</title>
+<title>Dremio数据湖引擎（二）：在win10环境下的安装部署 | Flynn Ji&#39;s Blog</title>
 
 
 
@@ -111,7 +111,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Dremio数据湖引擎（二）：在win10环境下的安装使用</h1>
+            <h1 class="post-title">Dremio数据湖引擎（二）：在win10环境下的安装部署</h1>
             
                 <div class="post-meta">
                     
@@ -132,9 +132,8 @@
             <p>&emsp;&emsp;由于博主日常使用的OS为windows10，故本文将简单展示如何在win10基于Docker容器安装部署Dremio。另外，Dremio的官网也给出诸如AWS版本、Azure版本等的安装部署包，有兴趣的话可通过以下链接前往了解：<a target="_blank" rel="noopener" href="https://www.dremio.com/deploy/">dremio deploy</a></p>
 <ul>
 <li><p>环境准备</p>
-<ul>
-<li>win10环境下的Docker容器服务</li>
-</ul>
+</li>
+<li><p>win10环境下的Docker容器服务</p>
 </li>
 <li><p>拉取dremio-oss的docker镜像</p>
 <p>这里拉取下来的社区版本的Dremio镜像，商业版本的Dremio需要联系Dremio官方了。当然，作为个人开发使用，社区版本的Dremio已完全够用了。</p>
@@ -163,7 +162,22 @@
 <p>点击文件路径一直到如下图的界面，可以看到这个数据源已经内置了csv、json、parquet等文件格式的多个数据文件或目录（对应基于表存储系统中的表）</p>
 <p><img src="/2019/09/28/Dremio/29c5c69a-f6a1-4b89-9b43-81c9b11d56b0/sample2.png" alt="这是代替图片的文字，随便写"></p>
 </li>
+<li><p>选择其中一个文件，点击文件名旁边的小加号复制文件的访问路径，然后到查询编辑器执行类似以下的查询SQL，但是此时会抛出错误，Dremio提示找不到此文件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> Samples.<span class="string">&quot;samples.dremio.com&quot;</span>.<span class="string">&quot;SF weather 2018-2019.csv&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/09/28/Dremio/29c5c69a-f6a1-4b89-9b43-81c9b11d56b0/sample3.jpg"></p>
+</li>
+<li><p>其实原因不难找，Dremio引擎其实也是通过类似其他数据库中的元数据机制来管理数据集的，只需要让我们要查询数据的文件注册到Dremio的元数据中就可以正常查询了。</p>
+<p>通过以下SQL可以查询到Dremio当前已知的元数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> INFORMATION_SCHEMA.<span class="string">&quot;TABLES&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过点击如下图按钮，将文件转换为指定的文件格式，就会将文件注册到Dremio的元数据中</p>
+<p><img src="/2019/09/28/Dremio/29c5c69a-f6a1-4b89-9b43-81c9b11d56b0/sample4.jpg"></p>
+<p>再回到查询器页面执行查询SQL，就能正常查询出数据了</p>
+<p><img src="/2019/09/28/Dremio/29c5c69a-f6a1-4b89-9b43-81c9b11d56b0/sample5.jpg"></p>
+</li>
 </ul>
+<p>&emsp;&emsp;到这里就算完成了Dremio的基本部署，并能简单使用Dremio提供的内置数据源查询到数据。</p>
 
         </div>
 
