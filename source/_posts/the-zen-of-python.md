@@ -1,8 +1,8 @@
 ---
 title: the_zen_of_python
 date: 2020-01-29 17:14:48
-tags: python
-categories: python
+tags: Python
+categories: Python
 id: 9582e008-73d6-41c7-8456-d619555849f1
 ---
 

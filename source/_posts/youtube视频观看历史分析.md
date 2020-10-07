@@ -1,8 +1,8 @@
 ---
 title: youtube视频观看历史分析
 date: 2020-01-05 23:40:07
-tags: python
-categories: python
+tags: Python
+categories: Python
 id: 180449ff-325f-4b08-b233-8499190a05bf
 ---
 
