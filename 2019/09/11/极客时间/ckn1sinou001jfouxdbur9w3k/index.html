@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Flynn Ji">
+
+
+
+
+
+<title>GeekTime -《MySQL实战45讲》笔记 | Flynn Ji&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Flynn Ji&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Flynn Ji&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">GeekTime -《MySQL实战45讲》笔记</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Flynn Ji</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 11, 2019&nbsp;&nbsp;15:28:21</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="MySQL实战45讲"><a href="#MySQL实战45讲" class="headerlink" title="MySQL实战45讲"></a>MySQL实战45讲</h1><h3 id="01-基础架构：一条SQL查询语句是如何执行的？"><a href="#01-基础架构：一条SQL查询语句是如何执行的？" class="headerlink" title="01_基础架构：一条SQL查询语句是如何执行的？"></a>01_基础架构：一条SQL查询语句是如何执行的？</h3><ul>
+<li><p>Mysql的逻辑架构图</p>
+<ul>
+<li><p>连接器</p>
+<p>负责跟客户端建立连接，获取权限，维持和管理连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h ip -P port -u username -p password</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据库当前的连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show processlist;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>长连接，指连接成功后，客户端持续请求会使用同一个连接</p>
+</li>
+<li><p>短连接，每次执行完很少的几次查询就断开连接，下次查询再重新建立一个</p>
+</li>
+<li><p>分析器</p>
+<ul>
+<li>词法分析</li>
+<li>语法分析</li>
+</ul>
+</li>
+<li><p>查询缓存</p>
+<ul>
+<li>执行过的语句及其结果直接缓存再内存中，查询命中则直接返回结果</li>
+<li>建议不要使用查询缓存，往往弊大于利</li>
+<li>使用SQL_CACHE显式指定使用查询缓存</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select SQL_CACHE * from T where ID &#x3D; 1;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>MySQL8.0版本将查询缓存整块功能删掉了</li>
+</ul>
+</li>
+<li><p>优化器</p>
+<p>执行计划生成，索引选择</p>
+</li>
+<li><p>执行器</p>
+<ul>
+<li>操作引擎，返回结果</li>
+<li>rows_examined，表示语句执行过程中扫描了多少行</li>
+<li>引擎扫描行数跟rows_examined并不少完全相同的</li>
+</ul>
+</li>
+<li><p>存储引擎</p>
+<p>负责数据的存储和提取，架构模式是插件式的，支持InnoDB，MyISAM，Memory等</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="02-日志系统：一条SQL更新语句是如何执行的？"><a href="#02-日志系统：一条SQL更新语句是如何执行的？" class="headerlink" title="02_日志系统：一条SQL更新语句是如何执行的？"></a>02_日志系统：一条SQL更新语句是如何执行的？</h3><ul>
+<li><p>WAL技术</p>
+<p>Write-Ahead Logging，关键点就是先写日志，再写磁盘</p>
+</li>
+<li><p>redo log 重做日志</p>
+<ul>
+<li>InnoDB特有的日志</li>
+<li>固定大小，可以配置为一组4个文件，每个文件大小是1GB</li>
+<li>从头开始写，写到末尾就回到开头循环写</li>
+<li>write pos是当前记录的位置</li>
+<li>checkpoint是当前要擦除的位置，擦除前要把记录更新到数据文件</li>
+<li>有了redo log，InnoDB可以保证数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为crash-safe</li>
+</ul>
+</li>
+<li><p>binlog 归档日志</p>
+</li>
+<li><p>server层自有的日志</p>
+</li>
+<li><p>三点不同</p>
+<ul>
+<li>redo log是InnoDB引擎特有的，binlog是Server层实现，所有引擎都可以使用</li>
+<li>redo log是物理日志，binlog是逻辑日志</li>
+<li>redo log是循环写，binlog是可以追加写的</li>
+</ul>
+</li>
+<li><p>两阶段提交</p>
+<ul>
+<li>redo log的写入拆成了两个步骤，prepare和commit</li>
+<li>作用：为了让redo log和binlog的状态保持逻辑上的一致</li>
+<li>两阶段提交是跨系统维持数据逻辑一致性时常用的一个方案</li>
+</ul>
+</li>
+</ul>
+<h3 id="03-事务隔离"><a href="#03-事务隔离" class="headerlink" title="03_事务隔离"></a>03_事务隔离</h3><ul>
+<li><p>ACID</p>
+<ul>
+<li>Atomicity，原子性</li>
+<li>Consistency，一致性</li>
+<li>Isolation，隔离性</li>
+<li>Durability，持久性</li>
+</ul>
+</li>
+<li><p>事务隔离级别</p>
+<ul>
+<li><p>读未提交，read uncommitted</p>
+<p>一个事务还没提交时，它做的变更就能别别的事务看到</p>
+</li>
+<li><p>读提交，read committed</p>
+<p>一个事务提交之后，它做的变更才会背其他事务看到</p>
+</li>
+<li><p>可重复读，repeatable read</p>
+<p>一个事务执行过程中看到的数据，总是跟这个事务在启动时看到的数据是一致的</p>
+</li>
+<li><p>串行化，serializable</p>
+<p>后访问的事务必须等前一个事务执行完成，才能继续执行</p>
+</li>
+</ul>
+</li>
+<li><p>MVCC，数据库的多版本并发控制</p>
+</li>
+<li><p>不同时刻启动的事务会有不同的read-view</p>
+</li>
+<li><p>长事务的风险，要避免长事务的使用</p>
+</li>
+<li><p>事务的启动方式</p>
+<ul>
+<li>begin 或者 start transaction</li>
+<li>set autocommit=0</li>
+</ul>
+</li>
+<li><p>information_schema.innodb_trx表可以查询长事务</p>
+</li>
+</ul>
+<h3 id="04-深入浅出索引（上）"><a href="#04-深入浅出索引（上）" class="headerlink" title="04_深入浅出索引（上）"></a>04_深入浅出索引（上）</h3><ul>
+<li><p>索引的出现其实就是为了提高数据查询的效率，就像书的目录一样</p>
+</li>
+<li><p>索引的常见模型</p>
+<ul>
+<li><p>哈希表</p>
+<p>哈希表这种结构适用于只有等值查询的场景</p>
+</li>
+<li><p>有序数组</p>
+<p>在等值查询和范围查询场景中的性能就都非常优秀，但是更新数据的操作成本太高，只适用于静态存储引擎</p>
+</li>
+<li><p>搜索树</p>
+</li>
+</ul>
+</li>
+<li><p>InnoDB的索引模型</p>
+<ul>
+<li>每一个索引在InnoDB里面对应一棵B+树</li>
+<li>主键索引的叶子节点存的是整行数据</li>
+<li>在InnoDB中主键索引也被称为聚簇索引，clustered index</li>
+<li>非主键索引的叶子节点内容是主键的值，在InnoDB中也被称为二级索引，secondary index</li>
+</ul>
+</li>
+<li><p>普通的索引查询方式：先搜索非主键索引树，再根据获取到的主键值到主键索引树搜索一次，称为回表</p>
+</li>
+<li><p>索引维护</p>
+<ul>
+<li>页分裂：数据页满，根据B+树的算法，需要申请一个新的数据页，然后挪动部分数据过去</li>
+<li>页合并：当相邻两个页由于删除了数据，利用率很低之后，会将数据页做合并</li>
+</ul>
+</li>
+<li><p>主键长度越小，普通索引的叶子节点就越小，普通索引占用的空间也就越小</p>
+</li>
+<li><p>从性能和存储空间方面考量，自增主键往往是更合理的选择</p>
+</li>
+</ul>
+<h3 id="05-深入浅出索引（下）"><a href="#05-深入浅出索引（下）" class="headerlink" title="05_深入浅出索引（下）"></a>05_深入浅出索引（下）</h3><ul>
+<li><p>回到主键索引树搜索的过程，我们称为回表</p>
+</li>
+<li><p>覆盖索引</p>
+<p>由于覆盖所有可以减少树的搜索次数，显著提升查询性能，所以使用覆盖所有是一个常用的性能优化手段</p>
+</li>
+<li><p>最左前缀原则</p>
+</li>
+<li><p>索引下推</p>
+<p>Mysql5.6引入的索引下推优化，index condition pushdown，可以在索引遍历过程中，对索引中包含的字段先做判断，直接过滤掉不满足条件的记录，减少回表次数</p>
+</li>
+</ul>
+<h3 id="06-全局锁和表锁"><a href="#06-全局锁和表锁" class="headerlink" title="06 全局锁和表锁"></a>06 全局锁和表锁</h3><ul>
+<li>根据加锁的范围，Mysql里面的锁大致可以分成全局锁，表级锁，和行锁三类</li>
+<li>全局锁的典型使用场景是，做全库逻辑备份，也就是把整库每个表都select出来存成文本</li>
+<li>官方自带的逻辑备份工具是mysqldump</li>
+<li>mysqldump -single-transaction 方法只适用于所有的表使用事务引擎的库</li>
+<li>表级别的锁有两种，一种是表锁，一种是元数据锁，meta data lock，MDL</li>
+<li>表锁的语法是 lock tables … read/write</li>
+<li>读锁之间不互斥，读写锁之间，写锁之间是互斥的</li>
+</ul>
+<h3 id="07-行锁功过"><a href="#07-行锁功过" class="headerlink" title="07 行锁功过"></a>07 行锁功过</h3><ul>
+<li><p>MyISAM引擎不支持行锁</p>
+</li>
+<li><p>InnoDB支持行锁，这也是MyISAM被InnoDB替代的重要原因之一</p>
+</li>
+<li><p>两阶段锁协议</p>
+<p>在InnoDB事务中，行锁是在需要的时候才加上的，但并不是不需要了就立刻释放，而是要等到事务结束时才释放</p>
+</li>
+<li><p>如果你的事务中需要锁多个行，要把最可能造成锁冲突，最可能影响并发度的锁尽量往后放</p>
+</li>
+<li><p>死锁和死锁检测</p>
+<ul>
+<li>策略1，等待超时，超时时间通过参数innodb_lock_wait_timeout来设置</li>
+<li>策略2，发起死锁检测，参数innodb_deadlock_detect设置为on</li>
+</ul>
+</li>
+</ul>
+<h3 id="08-事务到底是隔离的还是不隔离的？"><a href="#08-事务到底是隔离的还是不隔离的？" class="headerlink" title="08 事务到底是隔离的还是不隔离的？"></a>08 事务到底是隔离的还是不隔离的？</h3><ul>
+<li>视图的两个概念<ul>
+<li>一个是view，创建视图的语法是create view，查询方法和表一样</li>
+<li>另一个是InnoDB在实现MVCC用到的一致性读视图，consistent read view，用于支持RC，RR隔离级别的实现</li>
+</ul>
+</li>
+<li>每个事务有一个唯一的事务ID，叫做transaction id，按申请顺序严格递增的</li>
+<li>数据表中的一行记录，其实可能有多个版本，每个版本有自己的row trx_id</li>
+<li>up_limit_id，所有已提交的事务ID的最大值</li>
+<li>InnoDB利用了所有数据都有多个版本的这个特性，实现了秒级创建快照的能力</li>
+<li>更新数据都是先读后写的，而这个读，只能读当前的值，称为当前读，current read</li>
+<li>RR和RC隔离级别的区别<ul>
+<li>在RR下，只需要在事务开始的时候拿到up_limit_id，之后事务里的查询都共用这个up_limit_id</li>
+<li>在RC下，每一个语句在执行前都会重新算一次up_limit_id的值</li>
+</ul>
+</li>
+</ul>
+<h3 id="09-普通索引和唯一索引，应该怎么选择？"><a href="#09-普通索引和唯一索引，应该怎么选择？" class="headerlink" title="09 普通索引和唯一索引，应该怎么选择？"></a>09 普通索引和唯一索引，应该怎么选择？</h3><ul>
+<li>change buffer，当需要更新一个数据页时，如果数据页还没有在内存中，在不影响数据一致性的前提下，InnoDB会将这些更新操作缓存在change buffer中，这样就不需要从磁盘中读入这个数据页了</li>
+<li>将change buffer中的操作应用到原数据页，得到最新结果的过程称为purge</li>
+<li>唯一索引的更新不能使用change buffer，实际上也只有普通索引可以使用</li>
+<li>数据页在purge之前，change buffer记录的变更越多，收益就越大</li>
+<li>redo log主要节省的是随机写磁盘的IO消耗（转为顺序写），而change buffer主要节省的是随机读磁盘的IO消耗</li>
+</ul>
+<h3 id="10-Mysql为什么有时候会选错索引？"><a href="#10-Mysql为什么有时候会选错索引？" class="headerlink" title="10 Mysql为什么有时候会选错索引？"></a>10 Mysql为什么有时候会选错索引？</h3><ul>
+<li>优化器的逻辑<ul>
+<li>扫描行数是影响优化器选择索引的因素之一，扫描的行数越少，意味着访问磁盘数据的次数越少，消耗的CPU资源越少</li>
+</ul>
+</li>
+<li>索引的基数<ul>
+<li>一个索引上的不同值越多，这个索引的区分度越好，而一个索引上不同的值的个数，我们称之为基数，cardinality</li>
+<li>基数越大，索引的区分度越好</li>
+<li>InnoDB采用采样统计的方法得到索引的基数</li>
+<li>重新统计索引信息，analyze table t</li>
+<li>可以使用force index强行指定索引，也可以通过修改sql语句引导优化器</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-怎么给字符串家索引"><a href="#11-怎么给字符串家索引" class="headerlink" title="11 怎么给字符串家索引"></a>11 怎么给字符串家索引</h3><ul>
+<li>使用前缀索引，定义好长度，就可以做到既节省空间，又不用额外增加太多的查询成本</li>
+<li>建立索引时关注的是区分度，区分度越高越好</li>
+<li>使用覆盖所有就用不上覆盖索引对查询性能的优化了，这是在选择是否使用前缀索引时需要考虑的一个因素</li>
+<li>前缀索引区分度不够好的其他方式<ul>
+<li>倒序存储</li>
+<li>使用hash字段</li>
+</ul>
+</li>
+<li>字符串创建索引的方式：<ul>
+<li>完整索引</li>
+<li>前缀索引</li>
+<li>倒序存储</li>
+<li>hash字段索引</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-为什么我的Mysql会”抖“一下？"><a href="#12-为什么我的Mysql会”抖“一下？" class="headerlink" title="12 为什么我的Mysql会”抖“一下？"></a>12 为什么我的Mysql会”抖“一下？</h3><ul>
+<li>当内存数据页跟磁盘数据页内容不一致的时候，我们称这个内容页为”脏页“，内存数据写入到磁盘后，内存和磁盘上的数据页的内容就一致了，称为”干净页“</li>
+<li>Mysql偶尔抖一下的那个瞬间，可能就是在刷脏页</li>
+<li>什么情况会引发数据库的flush过程<ul>
+<li>redo log写满了</li>
+<li>系统内存不够，淘汰一些数据页</li>
+<li>Mysql认为系统空闲时</li>
+<li>Mysql正常关闭服务时</li>
+</ul>
+</li>
+<li>InnoDB用缓存池 buffer pool 管理内存</li>
+<li>InnoDB刷脏页的控制策略<ul>
+<li>innodb_io_capacity，告诉InnoDB你的磁盘能力</li>
+</ul>
+</li>
+<li>平时多关注脏页比例，不要让它经常接近75%</li>
+<li>innodb_flush_neighbors</li>
+</ul>
+<h3 id="13-为什么表数据删掉一半，表文件大小不变？"><a href="#13-为什么表数据删掉一半，表文件大小不变？" class="headerlink" title="13 为什么表数据删掉一半，表文件大小不变？"></a>13 为什么表数据删掉一半，表文件大小不变？</h3><ul>
+<li>参数innodb_file_per_table</li>
+<li>innodb删除行记录，只是把记录标记为删除，之后会复用这个位置，但磁盘大小不会缩小</li>
+<li>innodb删除数据页上的所有记录，整个数据页就可以被复用了</li>
+<li>用delete命令，删除整个表的数据，所有数据页都会被标记为可复用，但是磁盘上文件大小不会变小</li>
+<li>重建表<ul>
+<li>使用alter table A engine=InnoDB来重建表</li>
+</ul>
+</li>
+<li>Mysql5.6版本开始引入的Online DDL，对重建表流程做了优化</li>
+<li>Online 和 inplace<ul>
+<li>DDL过程如果是Online的，就一定是inplace的</li>
+<li>反过来未必，也就是说inplace的DLL，有可能不是DDL的，如，加全文索引FULLTEXT index和空间索引 SPATIAL index</li>
+</ul>
+</li>
+<li>三种方式重建表<ul>
+<li>alter table t engine = InnoDB，也即recreate</li>
+<li>analyze table t</li>
+<li>optimize table t 等于recreate+analyze</li>
+</ul>
+</li>
+</ul>
+<h3 id="14-count（-）这么慢，我该怎么办？"><a href="#14-count（-）这么慢，我该怎么办？" class="headerlink" title="14 count（*）这么慢，我该怎么办？"></a>14 count（*）这么慢，我该怎么办？</h3><ul>
+<li><p>count（*）的实现方式</p>
+<ul>
+<li>MyISAM引擎把一个表的总行数存在了磁盘上，执行count（*）的时候会直接返回这个数，效率很高；</li>
+<li>InnoDB执行时，需要把数据一行一行从引擎里面读出来，然后累计计数</li>
+</ul>
+</li>
+<li><p>在保证正确的前提下，尽量减少扫描的数据量，是数据库系统设计的通用法则之一</p>
+</li>
+<li><p>不同的count用法</p>
+<ul>
+<li>count（主键id）</li>
+<li>count（1）</li>
+<li>count（字段）</li>
+<li>count（*），不会把全部字段取出来，专门做了优化，不取值</li>
+</ul>
+</li>
+<li><p>按效率排序</p>
+<ul>
+<li>count（字段）&lt;count（主键id）&lt;count（1）约等于count（*）</li>
+</ul>
+<h3 id="16-order-by是怎么工作的？"><a href="#16-order-by是怎么工作的？" class="headerlink" title="16 order by是怎么工作的？"></a>16 order by是怎么工作的？</h3><ul>
+<li><p>全字段排序</p>
+<p>‘using filesort’表锁的需要排序，Mysql会给每个线程分配一块内存用于排序，称为sort_buffer</p>
+<ul>
+<li>sort_buffer_size，表示的是Mysql为排序开辟的内存大小，如果排序数据大&lt;sort_buffer_size，则在内存中完成，反之则利用磁盘临时文件辅助排序</li>
+<li>number_of_tmp_files，表示的是，排序过程中使用的临时文件数</li>
+</ul>
+</li>
+<li><p>rowid排序</p>
+<ul>
+<li>max_length_for_sort_data，是Mysql专门控制用于排序的行数据的长度的一个参数，如果单行出超过这个值，则Mysql认为要换一个排序算法</li>
+</ul>
+</li>
+<li><p>Mysql认为内存太小，才会采用rowid排序算法，如果认为内存足够大，会优先选择全字段排序，直接把需要的字段放到sort_buffer中</p>
+</li>
+<li><p>覆盖索引，索引上的信息足够满足查询请求，不需要回到主键索引上取数据</p>
+</li>
+<li><p>索引是有维护代价的，是不是需要用上覆盖索引，是需要权衡的决定</p>
+</li>
+</ul>
+<h3 id="17-如何正确地显示随机消息"><a href="#17-如何正确地显示随机消息" class="headerlink" title="17 如何正确地显示随机消息"></a>17 如何正确地显示随机消息</h3><ul>
+<li><p>使用order by rand()实现随机获取，使用了内存临时表，内存临时表排序的时候使用了rowid排序方法，执行代价比较大，在设计的时候要尽量避开这中写法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> word <span class="keyword">from</span> words <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">rand</span>() <span class="keyword">limit</span> <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Extra字段中，Using temporary，表示需要使用临时表；Using filesort，表示需要执行排序操作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>对于InnoDB表来说，相对于rowid排序，执行全字段排序会减少磁盘访问，因此会被优先选择</p>
+</li>
+<li><p>Mysql的表是用什么方法定位一行数据的？表的主键，或者是InnoDB会自己生成一个长度为6字节的rowid作为主键</p>
+</li>
+<li><p>tmp_table_size配置限制了内存临时表的大小，如果临时表超过了，则内存临时表会转成磁盘临时表</p>
+</li>
+<li><p>磁盘临时表引擎默认是InnoDB，由参数internal_disk_storage_engine控制</p>
+</li>
+<li><p>Mysql5.6引入了一个新的排序算法，即优先队列排序算法</p>
+</li>
+<li><p>如何正确的随机排序？</p>
+</li>
+</ul>
+<h3 id="18-为什么这些SQL语句逻辑相同，性能却差异巨大？"><a href="#18-为什么这些SQL语句逻辑相同，性能却差异巨大？" class="headerlink" title="18 为什么这些SQL语句逻辑相同，性能却差异巨大？"></a>18 为什么这些SQL语句逻辑相同，性能却差异巨大？</h3><ul>
+<li>对索引字段做函数操作，可能会破坏索引值的有序性，因此优化器就决定放弃走树搜索功能</li>
+<li>案例：<ul>
+<li>条件字段函数操作</li>
+<li>隐式类型转换，如字符串和数字做比较时，字符串转换为整数</li>
+<li>隐式字符编码转换</li>
+</ul>
+</li>
+</ul>
+<h3 id="19-为什么我只插一行的语句，也执行这么慢？"><a href="#19-为什么我只插一行的语句，也执行这么慢？" class="headerlink" title="19 为什么我只插一行的语句，也执行这么慢？"></a>19 为什么我只插一行的语句，也执行这么慢？</h3><ul>
+<li>常见的情况：<ul>
+<li>查询长时间不返回。一般大概率是查询表被锁住了<ul>
+<li>等MDL锁，waiting for table metadata lock，表示有一个线程正在表上请求或持有MDL写锁，把select语句堵住了。查询sys.schema_table_lock_waits可以找到造成阻塞的process id</li>
+<li>等flush</li>
+<li>等行锁</li>
+</ul>
+</li>
+<li>查询慢</li>
+</ul>
+</li>
+</ul>
+<h3 id="20-幻读是什么，幻读有什么问题？"><a href="#20-幻读是什么，幻读有什么问题？" class="headerlink" title="20 幻读是什么，幻读有什么问题？"></a>20 幻读是什么，幻读有什么问题？</h3><ul>
+<li>幻读，指的是一个事务在前后两次查询同一个范围的时候，后一次查询看到了前一次查询没有看到的行</li>
+<li>幻读的问题<ul>
+<li>语义问题</li>
+<li>数据一致性问题</li>
+</ul>
+</li>
+<li>即使那所有的记录都加上锁，还是阻止不了新插入的记录</li>
+<li>InnoDB通过引入新的锁，间隙锁，gap lock，来解决幻读问题</li>
+<li>间隙锁，锁的是两个值之间的空隙</li>
+<li>行级锁，是不同类型行级锁之间有冲突，而间隙锁则是，和“往这个间隙插入一个记录”这个操作存在冲突关系，间隙锁之间不存在冲突关系</li>
+<li>间隙锁和行级锁合称next-key lock，每个lock都是前开后闭区间，而间隙锁是开区间</li>
+<li>间隙锁只在可重复读隔离级别下才有效</li>
+</ul>
+<h3 id="21-为什么我只改一行的语句，锁这么多？"><a href="#21-为什么我只改一行的语句，锁这么多？" class="headerlink" title="21 为什么我只改一行的语句，锁这么多？"></a>21 为什么我只改一行的语句，锁这么多？</h3><h3 id="22-Mysql有哪些饮鸩止渴提高性能的方法？"><a href="#22-Mysql有哪些饮鸩止渴提高性能的方法？" class="headerlink" title="22 Mysql有哪些饮鸩止渴提高性能的方法？"></a>22 Mysql有哪些饮鸩止渴提高性能的方法？</h3><ul>
+<li>短连接风暴导致的性能问题，max_connections参数，用来控制一个Mysql实例同时存在的连接数的上限，超过这个值，系统会拒绝接下来的连接请求，提示，too many connections</li>
+<li>可能的解决方案<ul>
+<li>先处理掉那些占着连接但是不工作的线程</li>
+<li>减少连接过程的消耗</li>
+</ul>
+</li>
+<li>慢查询性能问题<ul>
+<li>索引没有设计好<ul>
+<li>变更索引，使用alter table</li>
+</ul>
+</li>
+<li>SQL语句没写好<ul>
+<li>使用query_write功能，把输入的语句改写成另外一种模式</li>
+</ul>
+</li>
+<li>Mysql选错了索引<ul>
+<li>应急方案是给语句加force index</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>QPS突增问题<ul>
+<li>修改白名单</li>
+<li>将用户删除，断开当前的连接</li>
+<li>可以使用query_write功能，先将压力最大的语句直接改写为select 1返回</li>
+</ul>
+</li>
+</ul>
+<h3 id="23-Mysql是怎么保证数据不丢的？"><a href="#23-Mysql是怎么保证数据不丢的？" class="headerlink" title="23 Mysql是怎么保证数据不丢的？"></a>23 Mysql是怎么保证数据不丢的？</h3><ul>
+<li>binlog的写入机制<ul>
+<li>写入流程：binlog cache -&gt; binlog files -&gt; disk</li>
+<li>每个线程有自己的binlog cache，write到binlog files指的是写入到文件系统的page cache，并没有持久化</li>
+<li>fsync到disk才是将数据持久化到磁盘的操作</li>
+</ul>
+</li>
+<li>write和fsync的时机，是由参数sync_binlog控制的</li>
+<li>在IO瓶颈的场景里，将sync_binlog设置成一个比较大的值，可以提升性能，但对应的风险：如果主机发生异常重启，会丢失最近N个事务的binlog日志</li>
+<li>redo log的写入机制<ul>
+<li>redo log的三种状态<ul>
+<li>存在redo log buffer中，即Mysql进程的内存中</li>
+<li>已write，未fsync，存在文件系统的page cacge中</li>
+<li>已fsync，存在磁盘中</li>
+</ul>
+</li>
+<li>未提交事务的redo log在以下三种场景中有可能会被写入到磁盘中：<ul>
+<li>后台线程每秒一次的轮询操作</li>
+<li>redo log buffer占用的空间即将达到innodb_log_buffer_size一半时，后台线程会主动写盘</li>
+<li>并行的其他事务提交时，顺带将这个事务的redo log buffer持久化到磁盘</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="24-Mysql是怎么保证主备一致的？"><a href="#24-Mysql是怎么保证主备一致的？" class="headerlink" title="24 Mysql是怎么保证主备一致的？"></a>24 Mysql是怎么保证主备一致的？</h3><ul>
+<li><p>readonly对超级权限用户是无效的，而主备同步更新的线程就拥有超级权限</p>
+</li>
+<li><p>binlog的三种格式</p>
+<ul>
+<li><p>statement</p>
+<p>原封不动地记录执行的sql语句，但是因为索引原因，可能导致主从执行结果不一致</p>
+</li>
+<li><p>row</p>
+<p>记录了执行的行记录，占用大量空间，耗费IO资源，影响执行速度</p>
+</li>
+<li><p>mixed（前两种格式的混合）</p>
+<p>Mysql会判断执行SQL使用哪种格式保存binlog，既利用了statement格式的优点，也避免了数据不一致的风险</p>
+</li>
+</ul>
+</li>
+<li><p>如果线上Mysql设置的binlog格式是statement，基本上就是不合理的设置，至少要设置为mixed</p>
+</li>
+<li><p>用row的好处：恢复数据，delete语句可以改为insert语句，insert语句改为delete语句，而update语句可以将event前后的信息对调一下，重新执行即可</p>
+</li>
+<li><p>双master模式下，如何解决两个节点间的循环复制问题？</p>
+<ul>
+<li>1，规定两个库的server_id不同，如果相同，则不能互为主备关系</li>
+<li>2，备库拿到主库的binlog执行并生成与原binlog的server_id相同的新的binlog</li>
+<li>3，每个库收到日志后，先判断server_id，如果和自己的相同，表示是自己生成的，直接丢弃这个日志</li>
+</ul>
+</li>
+</ul>
+<h3 id="25-Mysql是怎么保证高可用的？"><a href="#25-Mysql是怎么保证高可用的？" class="headerlink" title="25 Mysql是怎么保证高可用的？"></a>25 Mysql是怎么保证高可用的？</h3><ul>
+<li>主备延迟的最直接表现是，备库消费中转日志relay log的速度，比主库生产binlog的速度要慢</li>
+<li>主备延迟的来源<ul>
+<li>有些部署条件下，备库所在机器的性能要比主库所在的机器性能差</li>
+<li>备库压力大，备库的查询消耗大量的CPU资源，影响同步资源，造成主备延迟</li>
+<li>大事务，一次性操作的数据太多</li>
+<li>备库的并行复制能力</li>
+</ul>
+</li>
+<li>可靠性优先策略，主备延迟为0时才执行主从切换</li>
+<li>可用性优先策略，不等主备数据同步完成，直接把连接切到备库</li>
+</ul>
+<h3 id="26-备库为什么会延迟好几个小时？"><a href="#26-备库为什么会延迟好几个小时？" class="headerlink" title="26 备库为什么会延迟好几个小时？"></a>26 备库为什么会延迟好几个小时？</h3><ul>
+<li>如果备库执行日志的速度持续低于主库生成日志的速度，将造成主备延迟过高的问题</li>
+<li>在mysql5.6之前只支持单线程复制，为了解决主备延迟问题，进而演进为多线程复制</li>
+<li>并行复制策略<ul>
+<li>按表分发策略</li>
+<li>按行分发策略<ul>
+<li>相比于按表并行分发策略，按行并行策略在决定分发的时候，需要消耗更多的技术资源</li>
+</ul>
+</li>
+<li>mysql5.6版本的并行复制策略，支持的粒度是按库并行</li>
+<li>mariaDB的并行复制策略，基于redo log的组提交特性</li>
+<li>mysql5.7的并行复制策略</li>
+<li>mysql5.7.22的并行复制策略<ul>
+<li>binlog-transcation-dependency-tracking参数，用于控制使用哪个策略<ul>
+<li>COMIT_ORDER</li>
+<li>WRITESET</li>
+<li>WRITESET_SESSION</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="27-主库出问题了，从库怎么办？"><a href="#27-主库出问题了，从库怎么办？" class="headerlink" title="27 主库出问题了，从库怎么办？"></a>27 主库出问题了，从库怎么办？</h3><ul>
+<li><p>基于位点的主备切换</p>
+<ul>
+<li><p>主备切换时，位点很难精确定位到，故只能找一个稍微往前的，然后通过判断跳过那些在从库上已经执行过的事务</p>
+</li>
+<li><p>在主备切换时，要主动跳过错误，有两种常用的方法：</p>
+<ul>
+<li><p>主动跳过事务</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> sql_salve_skip_counter = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">start</span> <span class="keyword">slave</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置slave_skip_errors参数，直接设置跳过指定的错误，常见的有以下两类错误：</p>
+<ul>
+<li>1062，插入数据时的唯一键冲突</li>
+<li>1032，删除数据时找不到行，</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>GTID，global transaction identifier，全局事务ID，mysql5.6版本引入的，是一个事务在提交的时候生成的，是这个事务的唯一标识</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GTID=server_uuid:gno</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>基于GTID的主备切换</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">master_auto_position=1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="28-读写分离有哪些坑？"><a href="#28-读写分离有哪些坑？" class="headerlink" title="28 读写分离有哪些坑？"></a>28 读写分离有哪些坑？</h3><ul>
+<li>由于主从可能存在延迟，客户端执行完一个更新事务后马上发起查询，如果查询的是从库，就可能读到刚刚的事务更新之前的状态，称为过期读</li>
+<li>处理过期读的方案：<ul>
+<li>强制走主库方案</li>
+<li>sleep方案</li>
+<li>判断主备无延迟方案</li>
+<li>配合semo-sync方案</li>
+<li>等主库位点方案</li>
+<li>等GTID方案</li>
+</ul>
+</li>
+</ul>
+<h3 id="29-如何判断一个数据库是不是出问题了？"><a href="#29-如何判断一个数据库是不是出问题了？" class="headerlink" title="29 如何判断一个数据库是不是出问题了？"></a>29 如何判断一个数据库是不是出问题了？</h3><ul>
+<li><p>判断主库是否出问题？</p>
+<ul>
+<li><p>select 1</p>
+<ul>
+<li>成功返回，只能说明这个库的进程还在，并不能说明主库没问题</li>
+<li>并发连接，show processlist的结果中的连接指的是并发连接</li>
+<li>并发查询，当前正在执行的语句，是指的并发查询（并发线程）</li>
+<li>查询线程加入锁等待之后，并发线程的计数会减一，也就是说等行锁的线程不算在并发线程限制数中</li>
+</ul>
+</li>
+<li><p>查表判断</p>
+<ul>
+<li>一般做法是，在系统库中创建一个表，如health_check，然后定期执行select * from mysql.health_check</li>
+<li>如果数据库空间满了，这个方法就不好使</li>
+</ul>
+</li>
+<li><p>更新判断</p>
+<ul>
+<li><p>在表中存入多行数据，并用主库，备库的server_id做主键</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`health_check`</span> (</span><br><span class="line"> <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"> <span class="string">`t_modified`</span> <span class="built_in">timestamp</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>,</span><br><span class="line"> PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后更新语句，update mysql.health_check set t_modified=now()；</p>
+</li>
+<li><p>相对比较常用，但是存在服务器IO资源分配导致的update检测判断错误的问题</p>
+</li>
+</ul>
+</li>
+<li><p>内部统计</p>
+<ul>
+<li>读取performance_shcema库的file_summary_by_event_name表，统计了每次IO请求的时间</li>
+<li>打开所有performance_schema项，系统性能大概会下降10%，建议只打开自己需要的项进行统计</li>
+<li>通过判断MAX_TIMER的值来判断数据库是否出问题，通过设定阈值，检测超过阈值则数据库当前异常</li>
+</ul>
+</li>
+<li><p>优先考虑update系统表方法，再配合增加检测performance_schema的统计项</p>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Flynn Ji</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://fly9006.github.io/2019/09/11/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckn1sinou001jfouxdbur9w3k/">https://fly9006.github.io/2019/09/11/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckn1sinou001jfouxdbur9w3k/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        <a href="/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/"># 极客时间</a>
+                    
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"># 数据库</a>
+                    
+                        <a href="/tags/MySQL/"># MySQL</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/09/26/Dremio/3729a742-fb41-4777-babc-75ae80ab14ec/">Dremio数据湖引擎（一）：简介</a>
+            
+            
+            <a class="next" rel="next" href="/2019/07/26/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckn1sinov001kfoux29pshqw0/">GeekTime -《网络编程实战》笔记</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Flynn Ji | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

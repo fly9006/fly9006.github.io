@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Flynn Ji">
+
+
+
+
+
+<title>GeekTime -《趣谈Linux操作系统》笔记 | Flynn Ji&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Flynn Ji&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Flynn Ji&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">GeekTime -《趣谈Linux操作系统》笔记</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Flynn Ji</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 10, 2020&nbsp;&nbsp;21:29:41</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="趣谈Linux操作系统"><a href="#趣谈Linux操作系统" class="headerlink" title="趣谈Linux操作系统"></a>趣谈Linux操作系统</h1><h3 id="02-学习路径"><a href="#02-学习路径" class="headerlink" title="02 学习路径"></a>02 学习路径</h3><ul>
+<li><p>Linux的学习过程，总结下来，对应有6个坡，即6个阶段</p>
+<ul>
+<li><p>抛弃旧的思维习惯，熟练使用Linux命令行</p>
+<p>全面学习Linux命令，推荐《鸟哥的Linux私房菜》，更深入推荐《Linux系统管理技术手册》</p>
+</li>
+<li><p>通过系统调用或者glibc，学会自己进行程序设计</p>
+<p>《UNIX环境高级编程》</p>
+</li>
+<li><p>了解Linux内核机制，反复研习重点突破</p>
+<p>《深入理解LINUX内核》</p>
+</li>
+<li><p>阅读Linux内核代码，聚焦核心逻辑和场景</p>
+<p>《LINUX内核源代码情景分析》</p>
+</li>
+<li><p>实验定制化Linux组件，已经没人能阻挡你成为内核开发工程师了</p>
+</li>
+<li><p>面向真实场景的开发，实践没有终点</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="03-Linux内核体系结构"><a href="#03-Linux内核体系结构" class="headerlink" title="03 Linux内核体系结构"></a>03 Linux内核体系结构</h3><ul>
+<li>操作系统内核体系结构组成<ul>
+<li>系统调用子系统<ul>
+<li>操作系统的功能调用的统一入口</li>
+</ul>
+</li>
+<li>进程管理子系统<ul>
+<li>堆执行的程序进行生命周期和资源管理</li>
+</ul>
+</li>
+<li>内存管理子系统<ul>
+<li>对操作系统的内存进行管理，分配，挥手，隔离</li>
+</ul>
+</li>
+<li>文件子系统<ul>
+<li>对文件进行管理</li>
+</ul>
+</li>
+<li>设备子系统<ul>
+<li>对输入输出设备进行管理</li>
+</ul>
+</li>
+<li>网络子系统<ul>
+<li>网络协议栈和收发网络包</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="04-快速上手几个Linux命令"><a href="#04-快速上手几个Linux命令" class="headerlink" title="04 快速上手几个Linux命令"></a>04 快速上手几个Linux命令</h3><ul>
+<li><p>passwd</p>
+</li>
+<li><p>useradd</p>
+</li>
+<li><p>chown，chgrp</p>
+</li>
+<li><p>centos：rpm，ubuntu：deb</p>
+</li>
+<li><p>centos：yum，ubuntu：apt-get</p>
+</li>
+<li><p>Linux执行程序的方式：</p>
+<ul>
+<li><p>通过shell在交互命令行里面运行</p>
+</li>
+<li><p>后台运行</p>
+<ul>
+<li>nohup，no hang up，最后加一个&amp;，表示后台运行</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup <span class="built_in">command</span> &gt; out.file 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以服务的方式运行</p>
+<ul>
+<li>systemctl</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="05-学会几个系统调用"><a href="#05-学会几个系统调用" class="headerlink" title="05 学会几个系统调用"></a>05 学会几个系统调用</h3><ul>
+<li>进程管理<ul>
+<li>创建进程的系统调用叫fork</li>
+<li>父进程，Parent Process，子进程，Child Process</li>
+</ul>
+</li>
+<li>内存管理<ul>
+<li>对于进程内的内存空间，放程序代码的地方，称为代码段， Code Segment</li>
+<li>对于经常内的内存空间，放进程运行中产生数据的这部分，称为数据段，Data Segment</li>
+<li>局部变量在函数切换时会被释放，而动态分配需要较长时间保存，指明才销毁的，称为堆，Heap</li>
+<li>堆里面分配内存的系统调用：<ul>
+<li>调整内存数据段，brk</li>
+<li>内存映射，mmap</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>文件管理<ul>
+<li>Linux中，一切皆文件</li>
+<li>每个文件，Linux都会分配一个文件描述符，File Descriptor，是一个非负整数</li>
+</ul>
+</li>
+<li>信号处理<ul>
+<li>进程通过kill函数，将一个用户信号发送给另一个进程</li>
+<li>sigaction系统调用，可以注册一个信号处理函数</li>
+</ul>
+</li>
+<li>进程间通信<ul>
+<li>消息队列，Message Queue</li>
+<li>共享内存</li>
+</ul>
+</li>
+<li>网络通信<ul>
+<li>TCP/IP网络协议栈</li>
+</ul>
+</li>
+<li>Glibc，是Linux下使用的开源的标准C库，提供了丰富的API，如字符串处理，数据运算等用户态服务，还有封装了系统提供的系统服务，即系统调用的封装</li>
+</ul>
+<h3 id="06-x86架构"><a href="#06-x86架构" class="headerlink" title="06 x86架构"></a>06 x86架构</h3><ul>
+<li>计算机的核心，CPU，central processing unit，中央处理器</li>
+<li>CPU和其他设备的连接，需要总线，Bus</li>
+<li>CPU本身没办法保存太多的中间结果，需要依赖内存，Memory</li>
+<li>CPU由三部分组成：<ul>
+<li>运算单元，只管运算</li>
+<li>数据单元，包括CPU内部缓存和寄存器组，空间小，速度飞快</li>
+<li>控制单元，可以获得下一条指令，然后执行这条指令，指令会指导运算单元去除数据单元中的某些数据，计算出结果，然后放在数据单元的某个地方</li>
+</ul>
+</li>
+<li>控制单元<ul>
+<li>指令指针寄存器，存放下一条指令在内存中的地址，指令分为两部分，一部分是做什么操作，一部分是操作哪些数据</li>
+</ul>
+</li>
+<li>总线的分类<ul>
+<li>地址总线，Address Bus</li>
+<li>数据总线，Data Bus</li>
+</ul>
+</li>
+<li>23位的系统架构下，旧模式称为实模式，Real Pattern，新模式称为保护模式，Protected Pattern</li>
+</ul>
+<h3 id="07-从BIOS到bootloader"><a href="#07-从BIOS到bootloader" class="headerlink" title="07 从BIOS到bootloader"></a>07 从BIOS到bootloader</h3><ul>
+<li>ROM，Read Only Memory，只读存储器</li>
+<li>内存RAM，Random Access Memory，随机存取存储器</li>
+<li>BIOS，Basic Input and Output System，基本输入输出系统</li>
+<li>Grub2，Grand Unified Bootloader Version 2，系统启动工具</li>
+<li><ul>
+<li>安装boot.img，到第一个扇区，称为MBR，Master Boot Record，主引导记录/扇区</li>
+<li>加载grub2的另一个镜像，core.img</li>
+<li>控制权交到core.img的第一个扇区，diskboot.img</li>
+<li>doskboot.img加载，lzma_decompress.img，kernel.img，modules&amp;others</li>
+<li>lzma_decompress.img调用real_to_prot，切换到保护模式<ul>
+<li>启动分段，建立段描述符表，将寄存器中的段寄存器变成段选择子，指向段描述符，旧能实现不同进程的切换了</li>
+<li>启动分页，将内存分成相等大小的块</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>操作系统启动过程梳理<ul>
+<li>BIOS</li>
+<li>引导扇区，boot.img</li>
+<li>diskboot.img</li>
+<li>lzma_decompress.img，实模式到保护模式</li>
+<li>建立分段分页，打开地址线</li>
+<li>kernel.img，选择一个操作系统</li>
+<li>启动内核</li>
+</ul>
+</li>
+</ul>
+<h3 id="08-内核初始化"><a href="#08-内核初始化" class="headerlink" title="08 内核初始化"></a>08 内核初始化</h3><ul>
+<li><p>内核的启动从入口函数start_kernel()开始，相当于内核的main函数</p>
+<ul>
+<li>se_task_stack_end_magic(&amp;init_task)，创建0号进程，这是唯一一个没有通过fork或者kernel_thread产生的进程，是进程列表的第一个</li>
+<li>trap_init()，设置各种中断门，Interrupt Gate，用于处理中断事件</li>
+<li>mm_init()，初始化内存管理模块</li>
+<li>sched_init()，初始化调度模块</li>
+<li>vfs_caches_init()，初始化基于内存的文件系统rootfs</li>
+<li>rest_init()，其他的初始化工作<ul>
+<li>第一大作用是初始化1号进程，kernel_thread()，是所有用户态进程的祖先</li>
+<li>创建2号进程，kernel_thread()，是所有内核态进程运行的祖先</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>x86提供了分层的权限机制，把区域分成了四个Ring</p>
+<p><img src="/2020/12/10/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckn1sino60007fouxcsm8czot/Untitled.png" alt="Untitled.png"></p>
+<ul>
+<li>能够访问关键资源的代码放在Ring0，称为内核态，Kernel Mode</li>
+<li>将普通的程序代码放在Ring3，称为用户态，User Mode</li>
+<li>当程序发送网络包时，用户态 - 系统调用 - 保存寄存器 - 内核态执行系统调用 - 恢复寄存器 - 返回用户态，程序接着运行</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Flynn Ji</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://fly9006.github.io/2020/12/10/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckn1sino60007fouxcsm8czot/">https://fly9006.github.io/2020/12/10/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckn1sino60007fouxcsm8czot/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        <a href="/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/"># 极客时间</a>
+                    
+                        <a href="/tags/linux/"># linux</a>
+                    
+                        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"># 操作系统</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/09/05/Minio/54e3ebb6-fbb9-41b0-97d9-96c5ba466ff/">Minio对象存储服务（一）：简介与安装部署</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Flynn Ji | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
