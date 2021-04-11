@@ -12,7 +12,7 @@
 
 
 
-<title>GeekTime -《趣谈网络协议-从二层到三层》笔记 | Flynn Ji&#39;s Blog</title>
+<title>GeekTime -《深入剖析Kubernetes09-13》笔记 | Flynn Ji&#39;s Blog</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">GeekTime -《趣谈网络协议-从二层到三层》笔记</h1>
+            <h1 class="post-title">GeekTime -《深入剖析Kubernetes09-13》笔记</h1>
             
                 <div class="post-meta">
                     
@@ -182,7 +182,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2019-05-01&nbsp;&nbsp;
+                        Date: <a href="#">2021-03-18&nbsp;&nbsp;
                         
                         </a>
                         </span>
@@ -193,41 +193,69 @@
         </header>
 
         <div class="post-content">
-            <h1 id="趣谈网络协议-从二层到三层"><a href="#趣谈网络协议-从二层到三层" class="headerlink" title="趣谈网络协议-从二层到三层"></a>趣谈网络协议-从二层到三层</h1><h3 id="05-从物理层到MAC层"><a href="#05-从物理层到MAC层" class="headerlink" title="05 从物理层到MAC层"></a>05 从物理层到MAC层</h3><ul>
-<li>MAC，全称是Medium Access Control，即媒体访问控制</li>
-<li>通过ARP协议，已知IP地址获取MAC地址</li>
-</ul>
-<h3 id="06-交换机与VLAN"><a href="#06-交换机与VLAN" class="headerlink" title="06 交换机与VLAN"></a>06 交换机与VLAN</h3><ul>
-<li>STP协议，Spanning Tree Protocol，最小生成树<ul>
-<li>Root Bridge，根交换机</li>
-<li>Designated Bridges，指定交换机</li>
-<li>Bridge Protocol Data Units（BPDU），网桥协议数据单元</li>
-<li>Priority Vector，优先级向量</li>
+            <h1 id="深入剖析kubernetes"><a href="#深入剖析kubernetes" class="headerlink" title="深入剖析kubernetes"></a>深入剖析kubernetes</h1><h3 id="09-从容器到容器云：谈谈kubernetes的本质"><a href="#09-从容器到容器云：谈谈kubernetes的本质" class="headerlink" title="09 从容器到容器云：谈谈kubernetes的本质"></a>09 从容器到容器云：谈谈kubernetes的本质</h3><ul>
+<li>最具代表性的容器编排工具<ul>
+<li>docker compose + Swarm</li>
+<li>kubernetes</li>
 </ul>
 </li>
-<li>利用STP协议解决环路问题，将又环路的图变成没有环的树</li>
-<li>VLAN，虚拟局域网，用来解决广播和安全问题</li>
-</ul>
-<h3 id="07-ICMP与ping"><a href="#07-ICMP与ping" class="headerlink" title="07 ICMP与ping"></a>07 ICMP与ping</h3><ul>
-<li>ICMP全称Internet Control Mesaage Protocol，互联网控制报文协议</li>
-<li>ping就是查询报文，是一种主动请求，并且获得主动应答的ICMP协议</li>
-<li>Traceroute，使用的是差错报文</li>
-</ul>
-<h3 id="08-世界那么大，我想出网关"><a href="#08-世界那么大，我想出网关" class="headerlink" title="08 世界那么大，我想出网关"></a>08 世界那么大，我想出网关</h3><ul>
-<li>网关往往是一个路由器，是一个三层转发的设备，理由如何寻找下一跳的规则</li>
-<li>NAT，Network Address Translation</li>
-<li>不改变IP地址的网关。称为转发网关；改变IP地址的网关，称为NAT网关</li>
-</ul>
-<h3 id="09-路由协议"><a href="#09-路由协议" class="headerlink" title="09 路由协议"></a>09 路由协议</h3><ul>
-<li>动态路由算法</li>
-<li>距离矢量路由算法，distance vector routing<ul>
-<li>BGP，Border Gateway Protocol，外网路由协议</li>
+<li>Kubernetes是依托google的Borg项目的理论优势，由master和node两种节点组成，分别对应着控制节点和计算节点</li>
+<li>控制节点，即Master节点，由三个独立组件组合而成，负责API服务的kube-apiserver，负责调度的kube-scheduler，负责容器编排的kube-controller-manager，整个集群的持久化数据，则由kube-apiserver处理后保存在Ectd中</li>
+<li>计算节点上最核心的部分，叫做kubelet的组件。主要负责同容器运行时打交道</li>
+<li>kubelet还通过gRPC协议同一个叫做Device Plugin的插件进行交互，用来隔离GPU等宿主机物理设备的主要组件</li>
+<li>kubelet的另一个重要功能，调用网络插件和存储插件为容器配置网络和持久化存储</li>
+<li>kubernetes项目最主要的设计思想是，从更宏观的角度，以统一的方式来定义任务之间的各种关系，并且为将来支持更多种类的关系留有余地</li>
+<li>几个在kubernetes中的对象<ul>
+<li>Pod</li>
+<li>Job，用来描述一次性运行的pod</li>
+<li>DaemonSet，用来描述每个宿主机上必须且只能运行一个副本的守护进程服务</li>
+<li>CronJob，用于描述定时任务</li>
+<li>Deployment，pod的多实例管理器</li>
+<li>Service，主要作用，就是作为Pod的代理入口，从而代替Pod对外暴露一个固定的网络地址</li>
+<li>Secret，保存在Etcd中的键值对数据，用于pod间的访问鉴权</li>
 </ul>
 </li>
-<li>链路状态路由算法，link state routing<ul>
-<li>OSPF，Open Shortest Path First，开放式最短路径优先，称为IGP，Interior Gateway Protocol，内部网关协议</li>
+<li>在kubernetes项目中，推崇的使用方法是：<ul>
+<li>通过“编排对象”，Pod，Job，CronJob等，来描述你试图管理的应用</li>
+<li>再为它定义一些“服务对象”，比如Service，Secret等，这些对象，会负责具体的平台级功能</li>
 </ul>
 </li>
+</ul>
+<h3 id="10-kubernetes一键部署利器：kubeadm"><a href="#10-kubernetes一键部署利器：kubeadm" class="headerlink" title="10 kubernetes一键部署利器：kubeadm"></a>10 kubernetes一键部署利器：kubeadm</h3><ul>
+<li>kubeadm的工作原理<ul>
+<li>kubeadm的妥协方案，把kubelet直接运行在宿主机上，然后使用容器部署其他的kubernetes组件</li>
+</ul>
+</li>
+<li>kubeadm init的工作流程<ul>
+<li>首先要做的是，一系列的检查工作，以确定这台机器可以用来部署kubernetes，称为“Preflight Checks”</li>
+<li>然后，生成kubernetes对外提供服务所需的各种证书和对应的目录</li>
+<li>证书生成后，kubeadm接下来会为其他组件生成访问kube-apiserver所需的配置文件</li>
+<li>接下来，kubeadm会为Master组件生成Pod配置文件</li>
+<li>然后，kubeadm就会为集群生成一个bootstrap token</li>
+<li>token生成之后，kubeadm会将ca.crt等Master节点的重要信息，通过ConfigMap的方式保存在Etcd中，供后续部署Node节点使用</li>
+<li>最后一步，安装默认插件</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-第一个容器化应用"><a href="#12-第一个容器化应用" class="headerlink" title="12 第一个容器化应用"></a>12 第一个容器化应用</h3><ul>
+<li>一个YAML文件，在kubernetes中，就是一个API Objetc，API对象</li>
+<li>每一个API对象，都有一个叫做Metadata的字段，就是API对象的“标识”，即元数据，是我们从kubernetes中找到这个对象的主要依据</li>
+<li>一个API对象，大多可以分为Metadata和Spec两个部分，前者是这个对象的元数据，后者存放的是属于这个对象独有的定义，用来描述它所要表达的功能</li>
+<li>一些常用的命令<ul>
+<li>kubectl apply</li>
+<li>kubectl exec</li>
+<li>kubectl delete</li>
+<li>kubectl get</li>
+<li>kubectl create -f 我的配置文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="13-为什么我们需要Pod？"><a href="#13-为什么我们需要Pod？" class="headerlink" title="13 为什么我们需要Pod？"></a>13 为什么我们需要Pod？</h3><ul>
+<li>Pod，是kubernetes项目的原子调度单位，即最小的编排单位</li>
+<li>Docker容器的本质：Namespace做隔离，Cgroups做限制，rootfs做文件系统</li>
+<li>Pod，最重要的一个事实是，它只是一个逻辑概念</li>
+<li>Pod里的所有容器，共享的是同一个Network Namespace，并且可以声明共享同一个Volume</li>
+<li>Pod的实现需要使用一个中间容器，这个容器叫做Infra容器，永远是第一个被创建的容器</li>
 </ul>
 
         </div>
@@ -243,7 +271,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://fly9006.github.io/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz03000ey0ux7rk379nx/">https://fly9006.github.io/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz03000ey0ux7rk379nx/</a></span>
+                        <span><a href="https://fly9006.github.io/2021/03/18/uncatalog/ckndafysy0008e4uxbiynbubb/">https://fly9006.github.io/2021/03/18/uncatalog/ckndafysy0008e4uxbiynbubb/</a></span>
                     </p>
                 
                 
@@ -261,14 +289,6 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
-                    
-                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
-                    
-                        <a href="/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/"># 极客时间</a>
-                    
-                        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"># 网络协议</a>
-                    
-                        
                 </span>
             </div>
             <div>
@@ -279,10 +299,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2019/06/07/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vyzx0007y0ux1cm5cv27/">GeekTime -《网络编程实战-基础篇》笔记</a>
+                <a class="prev" rel="prev" href="/2021/03/22/uncatalog/ckndafyt00009e4ux0thp0e90/">GeekTime -《深入剖析Kubernetes14-17》笔记</a>
             
             
-            <a class="next" rel="next" href="/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz05000jy0ux728feki6/">GeekTime -《趣谈网络协议-通信协议综述》笔记</a>
+            <a class="next" rel="next" href="/2021/03/11/uncatalog/ckndafysx0007e4uxgsy4c6wn/">GeekTime -《深入剖析Kubernetes05-08》笔记</a>
             
         </section>
 
