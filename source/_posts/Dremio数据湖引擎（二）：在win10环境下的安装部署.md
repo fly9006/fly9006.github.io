@@ -1,6 +1,6 @@
 ---
 title: Dremio数据湖引擎（二）：在win10环境下的安装部署
-date: 2019-09-28 00:51:39
+date: 2019-09-28
 tags: 
 - Dremio
 categories:

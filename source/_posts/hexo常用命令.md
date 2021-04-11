@@ -1,6 +1,6 @@
 ---
 title: hexo常用命令
-date: 2018-10-06 11:32:41
+date: 2018-10-06
 tags: 
 - Hexo
 categories: Hexo

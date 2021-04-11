@@ -1,6 +1,6 @@
 ---
 title: GeekTime -《深入剖析Kubernetes》笔记
-date: 2021-03-17 21:04:39
+date: 2021-03-17
 tags:
 - 笔记
 - 极客时间

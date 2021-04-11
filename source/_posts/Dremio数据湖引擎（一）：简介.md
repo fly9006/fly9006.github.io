@@ -1,6 +1,6 @@
 ---
 title: Dremio数据湖引擎（一）：简介
-date: 2019-09-26 21:12:39
+date: 2019-09-26
 tags: 
 - Dremio
 categories:

@@ -1,6 +1,6 @@
 ---
 title: GeekTime -《MySQL实战45讲》笔记
-date: 2019-09-11 15:28:21
+date: 2019-09-11
 tags:
 - 笔记
 - 极客时间

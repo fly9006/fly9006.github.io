@@ -1,6 +1,6 @@
 ---
 title: GeekTime -《趣谈Linux操作系统》笔记
-date: 2020-12-10 21:29:41
+date: 2020-12-10
 tags:
 - 笔记
 - 极客时间

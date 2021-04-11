@@ -1,6 +1,6 @@
 ---
 title: Minio对象存储服务（一）：简介与安装部署
-date: 2020-09-05 21:25:28
+date: 2020-09-05
 tags: 
 - Minio
 categories:
