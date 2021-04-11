@@ -12,7 +12,7 @@
 
 
 
-<title>GeekTime -《趣谈网络协议》笔记 | Flynn Ji&#39;s Blog</title>
+<title>GeekTime -《趣谈网络协议-从二层到三层》笔记 | Flynn Ji&#39;s Blog</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">GeekTime -《趣谈网络协议》笔记</h1>
+            <h1 class="post-title">GeekTime -《趣谈网络协议-从二层到三层》笔记</h1>
             
                 <div class="post-meta">
                     
@@ -193,60 +193,7 @@
         </header>
 
         <div class="post-content">
-            <h1 id="趣谈网络协议"><a href="#趣谈网络协议" class="headerlink" title="趣谈网络协议"></a>趣谈网络协议</h1><h3 id="01-为什么要学习网络协议"><a href="#01-为什么要学习网络协议" class="headerlink" title="01 为什么要学习网络协议"></a>01 为什么要学习网络协议</h3><p><strong>协议三要素</strong>：</p>
-<ul>
-<li>语法，就是一段内容要符合一定的规则和格式</li>
-<li>语义，就是一段内容要代表某种意义</li>
-<li>顺序，定义先干啥，后干啥</li>
-</ul>
-<p><strong>大致的协议分层框架</strong></p>
-<ul>
-<li><p>应用层</p>
-<p>DHCP HTTP HTTPS DNS RPC GTP P2P RTMP</p>
-</li>
-<li><p>传输层</p>
-<p>TCP UDP</p>
-</li>
-<li><p>网络层</p>
-<p>IP ICMP OSPF BGP</p>
-</li>
-<li><p>链路层</p>
-<p>ARP VLAN STP</p>
-</li>
-<li><p>物理层</p>
-</li>
-</ul>
-<h3 id="02-为什么要学习网络协议"><a href="#02-为什么要学习网络协议" class="headerlink" title="02 为什么要学习网络协议"></a>02 为什么要学习网络协议</h3><ul>
-<li>只要是在网络上跑的包，都是完整的。可以有下层没上层，但绝不可能有上层没下层</li>
-<li>一个原则：对TCP协议来说，三次握手也好，重试也好，只要想发出去包，就要有IP层和MAC层，不然发不出去</li>
-</ul>
-<h3 id="03-最熟悉又陌生的命令行"><a href="#03-最熟悉又陌生的命令行" class="headerlink" title="03 最熟悉又陌生的命令行"></a>03 最熟悉又陌生的命令行</h3><ul>
-<li>如何查看当前操作系统的IP地址<ul>
-<li>win系统：ipconfig</li>
-<li>linux系统：ifconfig，ip addr</li>
-</ul>
-</li>
-<li>IP是地址，又定位功能；MAC是身份证，无定位功能</li>
-<li>CIDR可以用来片段是不是本地人</li>
-<li>IP分公有IP和私有IP</li>
-</ul>
-<h3 id="04-DHCP与PXE：IP是怎么来的，又是怎么没的？"><a href="#04-DHCP与PXE：IP是怎么来的，又是怎么没的？" class="headerlink" title="04 DHCP与PXE：IP是怎么来的，又是怎么没的？"></a>04 DHCP与PXE：IP是怎么来的，又是怎么没的？</h3><ul>
-<li>如何配置IP地址<ul>
-<li>net-tools</li>
-<li>iproute2</li>
-</ul>
-</li>
-<li>动态主机配置协议（Dynamic Host Configuration Protocol），简称DHCP</li>
-<li>DHCP工作方式<ul>
-<li>DHCP Discover</li>
-<li>DHCP Server</li>
-<li>DHCP Offer</li>
-</ul>
-</li>
-<li>IP地址的收回和续租</li>
-<li>预启动执行环境（PXE，Pre-boot Execution Environment）</li>
-</ul>
-<h3 id="05-从物理层到MAC层"><a href="#05-从物理层到MAC层" class="headerlink" title="05 从物理层到MAC层"></a>05 从物理层到MAC层</h3><ul>
+            <h1 id="趣谈网络协议-从二层到三层"><a href="#趣谈网络协议-从二层到三层" class="headerlink" title="趣谈网络协议-从二层到三层"></a>趣谈网络协议-从二层到三层</h1><h3 id="05-从物理层到MAC层"><a href="#05-从物理层到MAC层" class="headerlink" title="05 从物理层到MAC层"></a>05 从物理层到MAC层</h3><ul>
 <li>MAC，全称是Medium Access Control，即媒体访问控制</li>
 <li>通过ARP协议，已知IP地址获取MAC地址</li>
 </ul>
@@ -296,7 +243,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://fly9006.github.io/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckn8yin5g00080cuxa4i72bb0/">https://fly9006.github.io/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckn8yin5g00080cuxa4i72bb0/</a></span>
+                        <span><a href="https://fly9006.github.io/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz03000ey0ux7rk379nx/">https://fly9006.github.io/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz03000ey0ux7rk379nx/</a></span>
                     </p>
                 
                 
@@ -332,10 +279,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2019/07/26/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckn8yin61001r0cux14n1di8v/">GeekTime -《网络编程实战》笔记</a>
+                <a class="prev" rel="prev" href="/2019/06/07/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vyzx0007y0ux1cm5cv27/">GeekTime -《网络编程实战-基础篇》笔记</a>
             
             
-            <a class="next" rel="next" href="/2018/11/26/%E9%9A%8F%E7%AC%94/a93ccad9-bd9d-4124-801e-0d8e41ba278c/">在漫长的旅途中</a>
+            <a class="next" rel="next" href="/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz05000jy0ux728feki6/">GeekTime -《趣谈网络协议-通信协议综述》笔记</a>
             
         </section>
 

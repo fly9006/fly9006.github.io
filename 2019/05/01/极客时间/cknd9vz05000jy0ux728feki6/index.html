@@ -12,7 +12,7 @@
 
 
 
-<title>Minio对象存储服务（一）：简介与安装部署 | Flynn Ji&#39;s Blog</title>
+<title>GeekTime -《趣谈网络协议-通信协议综述》笔记 | Flynn Ji&#39;s Blog</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Minio对象存储服务（一）：简介与安装部署</h1>
+            <h1 class="post-title">GeekTime -《趣谈网络协议-通信协议综述》笔记</h1>
             
                 <div class="post-meta">
                     
@@ -182,7 +182,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2020-09-05&nbsp;&nbsp;
+                        Date: <a href="#">2019-05-01&nbsp;&nbsp;
                         
                         </a>
                         </span>
@@ -193,39 +193,59 @@
         </header>
 
         <div class="post-content">
-            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>&emsp;&emsp;MinIO是一个基于Apache License v2.0开源协议的对象存储服务。它兼容亚马逊S3云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几kb到最大5T不等。</p>
-<p>&emsp;&emsp;MinIO是一个非常轻量的服务,可以很简单的和其他应用的结合，类似 NodeJS, Redis 或者 MySQL。</p>
-<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ul>
-<li>Windows10操作系统</li>
-<li>Docker</li>
-</ul>
-<h3 id="单节点模式部署"><a href="#单节点模式部署" class="headerlink" title="单节点模式部署"></a>单节点模式部署</h3><p>&emsp;&emsp;Minio需要配置存储空间来让数据持久化，但我们目前只需要将Minio服务部署运行起来即可。</p>
+            <h1 id="趣谈网络协议-通信协议综述"><a href="#趣谈网络协议-通信协议综述" class="headerlink" title="趣谈网络协议-通信协议综述"></a>趣谈网络协议-通信协议综述</h1><h3 id="01-为什么要学习网络协议"><a href="#01-为什么要学习网络协议" class="headerlink" title="01 为什么要学习网络协议"></a>01 为什么要学习网络协议</h3><p><strong>协议三要素</strong>：</p>
 <ul>
-<li><p>先从docker上拉取Minio的服务镜像</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull minio/minio</span><br></pre></td></tr></table></figure>
+<li>语法，就是一段内容要符合一定的规则和格式</li>
+<li>语义，就是一段内容要代表某种意义</li>
+<li>顺序，定义先干啥，后干啥</li>
+</ul>
+<p><strong>大致的协议分层框架</strong></p>
+<ul>
+<li><p>应用层</p>
+<p>DHCP HTTP HTTPS DNS RPC GTP P2P RTMP</p>
 </li>
-<li><p>运行以下示例命令，将运行一个供测试用的Minio服务，其中我们指定了一个目录名称，来告诉Minio将文件临时存储在此目录下，此目录会在容器启动后自动创建。需要注意的是，容器实例一旦停止运行，/data目录上的数据将随之消失。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9000:9000 minio/minio server /data</span><br></pre></td></tr></table></figure>
+<li><p>传输层</p>
+<p>TCP UDP</p>
 </li>
-<li><p>在shell上启动服务成功后，将看到以下输出，其中的<code>&#39;minioadmin:minioadmin&#39;</code>是默认登录用的AK和AS</p>
-<p><img src="/2020/09/05/Minio/54e3ebb6-fbb9-41b0-97d9-96c5ba466ff/img-01.png"></p>
+<li><p>网络层</p>
+<p>IP ICMP OSPF BGP</p>
+</li>
+<li><p>链路层</p>
+<p>ARP VLAN STP</p>
+</li>
+<li><p>物理层</p>
 </li>
 </ul>
-<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
-<li><p>使用默认的密钥登录成功后就到了Minio管理面板首页</p>
-<p><img src="/2020/09/05/Minio/54e3ebb6-fbb9-41b0-97d9-96c5ba466ff/img-02.png"></p>
-</li>
-<li><p>需要先创建一个Bucket，右下角的<code>+</code>点击后可以创建一个新的Bucket，如下图示例创建了一个名为tmp-bucket的Bucket</p>
-<p><img src="/2020/09/05/Minio/54e3ebb6-fbb9-41b0-97d9-96c5ba466ff/img-03.png"></p>
-</li>
-<li><p>在显示当前文件路径的右侧有个<code>+</code>按钮，跳过这个按钮可以创建指定名称的目录，在上个步骤中右下角的<code>+</code>中提供了<code>upload file</code>的功能，可以让我们快速地上传一个文件，如以下示例，在路径为<code>tmp-bucket/tmp/</code>的目录下，上传了一个文件名为<code>新建文本文档.txt</code>的文件</p>
-<p><img src="/2020/09/05/Minio/54e3ebb6-fbb9-41b0-97d9-96c5ba466ff/img-04.png"></p>
-</li>
-<li><p>在每个文件的最右侧的<code>...</code>中还提供了文件分享、下载以及删除的功能</p>
-<p><img src="/2020/09/05/Minio/54e3ebb6-fbb9-41b0-97d9-96c5ba466ff/img-05.png"></p>
-</li>
+<h3 id="02-为什么要学习网络协议"><a href="#02-为什么要学习网络协议" class="headerlink" title="02 为什么要学习网络协议"></a>02 为什么要学习网络协议</h3><ul>
+<li>只要是在网络上跑的包，都是完整的。可以有下层没上层，但绝不可能有上层没下层</li>
+<li>一个原则：对TCP协议来说，三次握手也好，重试也好，只要想发出去包，就要有IP层和MAC层，不然发不出去</li>
 </ul>
-<p>&emsp;&emsp;以上就是Minio管理面板的简单操作示例，Minio提供的管理面板只适用于一些简单的应用场景或者Debug调试使用，正常的业务生产环境中一般是需要通过Minio官方或第三方的SDK来对文件进行操作。</p>
+<h3 id="03-最熟悉又陌生的命令行"><a href="#03-最熟悉又陌生的命令行" class="headerlink" title="03 最熟悉又陌生的命令行"></a>03 最熟悉又陌生的命令行</h3><ul>
+<li>如何查看当前操作系统的IP地址<ul>
+<li>win系统：ipconfig</li>
+<li>linux系统：ifconfig，ip addr</li>
+</ul>
+</li>
+<li>IP是地址，又定位功能；MAC是身份证，无定位功能</li>
+<li>CIDR可以用来片段是不是本地人</li>
+<li>IP分公有IP和私有IP</li>
+</ul>
+<h3 id="04-DHCP与PXE：IP是怎么来的，又是怎么没的？"><a href="#04-DHCP与PXE：IP是怎么来的，又是怎么没的？" class="headerlink" title="04 DHCP与PXE：IP是怎么来的，又是怎么没的？"></a>04 DHCP与PXE：IP是怎么来的，又是怎么没的？</h3><ul>
+<li>如何配置IP地址<ul>
+<li>net-tools</li>
+<li>iproute2</li>
+</ul>
+</li>
+<li>动态主机配置协议（Dynamic Host Configuration Protocol），简称DHCP</li>
+<li>DHCP工作方式<ul>
+<li>DHCP Discover</li>
+<li>DHCP Server</li>
+<li>DHCP Offer</li>
+</ul>
+</li>
+<li>IP地址的收回和续租</li>
+<li>预启动执行环境（PXE，Pre-boot Execution Environment）</li>
+</ul>
 
         </div>
 
@@ -240,7 +260,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://fly9006.github.io/2020/09/05/Minio/54e3ebb6-fbb9-41b0-97d9-96c5ba466ff/">https://fly9006.github.io/2020/09/05/Minio/54e3ebb6-fbb9-41b0-97d9-96c5ba466ff/</a></span>
+                        <span><a href="https://fly9006.github.io/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz05000jy0ux728feki6/">https://fly9006.github.io/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz05000jy0ux728feki6/</a></span>
                     </p>
                 
                 
@@ -259,7 +279,11 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/Minio/"># Minio</a>
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        <a href="/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/"># 极客时间</a>
+                    
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"># 网络协议</a>
                     
                         
                 </span>
@@ -272,10 +296,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/12/10/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz02000dy0ux6fsb4kjs/">GeekTime -《趣谈Linux操作系统》笔记</a>
+                <a class="prev" rel="prev" href="/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz03000ey0ux7rk379nx/">GeekTime -《趣谈网络协议-从二层到三层》笔记</a>
             
             
-            <a class="next" rel="next" href="/2020/04/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/cknd9vz0r002ry0ux9hnw937f/">算法小抄 - 二分查找</a>
+            <a class="next" rel="next" href="/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/cknd9vz06000ky0uxg7o5gtzp/">GeekTime -《趣谈网络协议》笔记</a>
             
         </section>
 
