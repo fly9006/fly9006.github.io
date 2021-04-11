@@ -119,7 +119,7 @@ categories:
   - 读操作。非阻塞模式下read函数调用会立即返回，一般是EWOULDBLOCK或EAGAIN出错信息
   - 写操作。write函数返回当前函数调用有多少数据被拷贝到了发送缓冲区
 
-  ![Untitled5.png](G:\workspace\fly9006.github.io\source\_posts\Untitled5.png)
+  ![Untitled5.png](Untitled5.png)
 
 - 一般非阻塞I/O下，使用轮询的方式引起CPU占用率高，所以一般将非阻塞I/O和I/O多路复用技术select，poll等倒赔使用，是linux下高性能网络编程的首选
 
@@ -227,19 +227,19 @@ categories:
 
 - 阻塞I/O
 
-![Untitled6.png](G:\workspace\fly9006.github.io\source\_posts\Untitled6.png)
+![Untitled6.png](Untitled6.png)
 
 - 非阻塞I/O
 
-![Untitled7.png](G:\workspace\fly9006.github.io\source\_posts\Untitled7.png)
+![Untitled7.png](Untitled7.png)
 
 - 多路复用
 
-![Untitled8.png](G:\workspace\fly9006.github.io\source\_posts\Untitled8.png)
+![Untitled8.png](Untitled8.png)
 
 - 异步I/O
 
-![Untitled9.png](G:\workspace\fly9006.github.io\source\_posts\Untitled9.png)
+![Untitled9.png](Untitled9.png)
 
 - 在read调用时，内核将数据从内核空间拷贝到应用程序空间，这个过程是在read函数中同步进行的，如果内核实现的拷贝效率很差，read调用就会在这个同步过程中消耗比较长的时间
 - 在linux下的aio异步操作支持很少，故一般都是使用epoll这样的I/O分发技术

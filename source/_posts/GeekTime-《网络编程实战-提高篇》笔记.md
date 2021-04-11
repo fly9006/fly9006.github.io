@@ -16,7 +16,7 @@ categories:
 
 - TCP连接的四次挥手
 
-![Untitled2.png](G:\workspace\fly9006.github.io\source\_posts\Untitled2.png)
+![Untitled2.png](Untitled2.png)
 
 - TIME_WAIT停留程序时间是固定的，是最长分节生命期MSL，maximum segment lifetime的两倍，一般称之为2MSL
 - 只有发起连接终止的一方会进入TIME_WAIT状态（面试常问）
@@ -90,11 +90,11 @@ int shutdown(int sockfd, int howto)
 
 - 显式编码报文长度
 
-  ![Untitled3.png](G:\workspace\fly9006.github.io\source\_posts\Untitled3.png)
+  ![Untitled3.png](Untitled3.png)
 
 - 特殊字符作为边界
 
-  ![Untitled4.png](G:\workspace\fly9006.github.io\source\_posts\Untitled4.png)
+  ![Untitled4.png](Untitled4.png)
 
   - HTTP就是通过设置回车符，换行符作为HTTP报文协议的边界
 
