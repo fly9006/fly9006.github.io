@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Flynn Ji">
+
+
+
+
+
+<title>GeekTime -《深入剖析Kubernetes14-17》笔记 | Flynn Ji&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Flynn Ji&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">目录</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Flynn Ji&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">目录</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">GeekTime -《深入剖析Kubernetes14-17》笔记</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Flynn Ji</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021-03-22&nbsp;&nbsp;
+                        
+                        </a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="深入剖析kubernetes"><a href="#深入剖析kubernetes" class="headerlink" title="深入剖析kubernetes"></a>深入剖析kubernetes</h1><h3 id="14-深入解析Pod对象（一）：基本概念"><a href="#14-深入解析Pod对象（一）：基本概念" class="headerlink" title="14 深入解析Pod对象（一）：基本概念"></a>14 深入解析Pod对象（一）：基本概念</h3><ul>
+<li><p>Pod和Container的关系：只是Pod属性里的一个普通的字段</p>
+</li>
+<li><p>凡是调度，网络，存储，以及安全相关的属性，基本上是Pod级别的</p>
+</li>
+<li><p>Pod中几个重要的字段</p>
+<ul>
+<li>NodeSelector，一个供用户将Pod与Node进行绑定的字段</li>
+<li>NodeName，这个字段被赋值会被认为Pod已经经过了调度</li>
+<li>HostAliases：定义了Pod的hosts文件里的内容，如：/etc/hosts</li>
+<li>凡是跟容器的Linux Namespace相关的属性，也一定是Pod级别的</li>
+<li>凡是Pod中的容器要共享宿主机的Namespace，也一定是Pod级别的定义</li>
+</ul>
+</li>
+<li><p>Container中的重要字段</p>
+<ul>
+<li>ImagePullPolicy字段，定义了镜像拉取的策略</li>
+<li>Lifecycle字段，定义的是Container Lifecycle Hooks，例如postStart和preStop参数</li>
+<li>Staus字段，包括以下几种可能的状态：<ul>
+<li>Pending</li>
+<li>Running</li>
+<li>Succeded</li>
+<li>Failed</li>
+<li>Unknown</li>
+</ul>
+</li>
+<li>Status还能细分出一组conditions，包括：<ul>
+<li>PodScheduled，Ready，Initialized，Unschedulable</li>
+</ul>
+</li>
+</ul>
+<h3 id="15-深入解析Pod对象（二）：使用进阶"><a href="#15-深入解析Pod对象（二）：使用进阶" class="headerlink" title="15 深入解析Pod对象（二）：使用进阶"></a>15 深入解析Pod对象（二）：使用进阶</h3><ul>
+<li>特殊的Volumn，叫做Projected Volumn，可以翻译为，“投射数据卷”</li>
+<li>kubernetes支持的Projected Volumn<ul>
+<li>Secret，典型场景，存放数据库的Credential信息</li>
+<li>ConfigMap，用法与Secret几乎相同，保存的是不需要加密并且为应用所需的配置信息</li>
+<li>Downward API，作用是让Pod里的容器能够直接获取到这个Pod API对象本身的信息，注意的是，获取的信息一定是Pod里的容器进程启动之前就能够确定下来的信息</li>
+<li>ServiceAccountToken，只是一种特殊的Secret Volumn</li>
+</ul>
+</li>
+<li>PodPreset，即Pod预设置，可以用于对Pod批量化，自动化修改；其定义的内容只会在Pod API对象被创建之前追加在这个对象本身上，而不会影响任何Pod的控制器的定义</li>
+</ul>
+<h3 id="16-编排其实很简单：谈谈“控制器”模型"><a href="#16-编排其实很简单：谈谈“控制器”模型" class="headerlink" title="16 编排其实很简单：谈谈“控制器”模型"></a>16 编排其实很简单：谈谈“控制器”模型</h3><ul>
+<li>控制器模式，control pattern</li>
+<li>Pod这个看似复杂的API对象，实际上就是对容器的进一步抽象和封装而已</li>
+<li>kubernetes的一个通用编排模式，控制循环，control loop，也叫调谐，reconcile，调谐的过程被称作调谐循环reconcile loop或同步循环sync loop</li>
+<li>Deployment控制器，实际上都是由上半部分的控制器定义（包括期望状态），加上下半部分的被控制对象的模板组成的</li>
+</ul>
+<h3 id="17-经典PaaS的记忆：作业副本与水平扩展"><a href="#17-经典PaaS的记忆：作业副本与水平扩展" class="headerlink" title="17 经典PaaS的记忆：作业副本与水平扩展"></a>17 经典PaaS的记忆：作业副本与水平扩展</h3><ul>
+<li>Kubernetes中第一个重要的设计思想：控制器模式</li>
+<li>Kubernetes中第一个控制器模式的完整实现：Deployment</li>
+<li>两个编排动作<ul>
+<li>水平扩展/收缩</li>
+<li>滚动更新<ul>
+<li>四个状态字段<ul>
+<li>DESIRED，用户期望的Pod副本个数</li>
+<li>CURRENT，当前处于running状态的Pod的个数</li>
+<li>UP-TO-DATE，当前处于最新版本的Pod的个数</li>
+<li>AVAILABLE，当前已经可用的Pod的个数，既是running又是最新版本，处于Ready状态的Pod个数</li>
+</ul>
+</li>
+<li>只有AVAILABLE字段描述的才是用户所期望的最终状态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Deployment只是在ReplicaSet的基础上，添加了UP-TO-DATE这个跟版本相关的状态字段</li>
+<li>Deployment实际上是一个两层控制器，通过ReplicaSet的个数来描述应用的版本，再通过ReplicaSet的属性来保证Pod的副本数量</li>
+<li>Deployment控制ReplicaSet（应用版本），ReplicaSet控制Pod（副本数）</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Flynn Ji</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://fly9006.github.io/2021/03/22/uncatalog/ckng0fspj00095sux3q1r1ifu/">https://fly9006.github.io/2021/03/22/uncatalog/ckng0fspj00095sux3q1r1ifu/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/03/18/uncatalog/ckng0fspi00085suxan0hfg2f/">GeekTime -《深入剖析Kubernetes09-13》笔记</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Flynn Ji | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

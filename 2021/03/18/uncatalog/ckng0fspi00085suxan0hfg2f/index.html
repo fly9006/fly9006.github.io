@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Flynn Ji">
+
+
+
+
+
+<title>GeekTime -《深入剖析Kubernetes09-13》笔记 | Flynn Ji&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Flynn Ji&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">目录</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Flynn Ji&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">目录</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">GeekTime -《深入剖析Kubernetes09-13》笔记</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Flynn Ji</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021-03-18&nbsp;&nbsp;
+                        
+                        </a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="深入剖析kubernetes"><a href="#深入剖析kubernetes" class="headerlink" title="深入剖析kubernetes"></a>深入剖析kubernetes</h1><h3 id="09-从容器到容器云：谈谈kubernetes的本质"><a href="#09-从容器到容器云：谈谈kubernetes的本质" class="headerlink" title="09 从容器到容器云：谈谈kubernetes的本质"></a>09 从容器到容器云：谈谈kubernetes的本质</h3><ul>
+<li>最具代表性的容器编排工具<ul>
+<li>docker compose + Swarm</li>
+<li>kubernetes</li>
+</ul>
+</li>
+<li>Kubernetes是依托google的Borg项目的理论优势，由master和node两种节点组成，分别对应着控制节点和计算节点</li>
+<li>控制节点，即Master节点，由三个独立组件组合而成，负责API服务的kube-apiserver，负责调度的kube-scheduler，负责容器编排的kube-controller-manager，整个集群的持久化数据，则由kube-apiserver处理后保存在Ectd中</li>
+<li>计算节点上最核心的部分，叫做kubelet的组件。主要负责同容器运行时打交道</li>
+<li>kubelet还通过gRPC协议同一个叫做Device Plugin的插件进行交互，用来隔离GPU等宿主机物理设备的主要组件</li>
+<li>kubelet的另一个重要功能，调用网络插件和存储插件为容器配置网络和持久化存储</li>
+<li>kubernetes项目最主要的设计思想是，从更宏观的角度，以统一的方式来定义任务之间的各种关系，并且为将来支持更多种类的关系留有余地</li>
+<li>几个在kubernetes中的对象<ul>
+<li>Pod</li>
+<li>Job，用来描述一次性运行的pod</li>
+<li>DaemonSet，用来描述每个宿主机上必须且只能运行一个副本的守护进程服务</li>
+<li>CronJob，用于描述定时任务</li>
+<li>Deployment，pod的多实例管理器</li>
+<li>Service，主要作用，就是作为Pod的代理入口，从而代替Pod对外暴露一个固定的网络地址</li>
+<li>Secret，保存在Etcd中的键值对数据，用于pod间的访问鉴权</li>
+</ul>
+</li>
+<li>在kubernetes项目中，推崇的使用方法是：<ul>
+<li>通过“编排对象”，Pod，Job，CronJob等，来描述你试图管理的应用</li>
+<li>再为它定义一些“服务对象”，比如Service，Secret等，这些对象，会负责具体的平台级功能</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-kubernetes一键部署利器：kubeadm"><a href="#10-kubernetes一键部署利器：kubeadm" class="headerlink" title="10 kubernetes一键部署利器：kubeadm"></a>10 kubernetes一键部署利器：kubeadm</h3><ul>
+<li>kubeadm的工作原理<ul>
+<li>kubeadm的妥协方案，把kubelet直接运行在宿主机上，然后使用容器部署其他的kubernetes组件</li>
+</ul>
+</li>
+<li>kubeadm init的工作流程<ul>
+<li>首先要做的是，一系列的检查工作，以确定这台机器可以用来部署kubernetes，称为“Preflight Checks”</li>
+<li>然后，生成kubernetes对外提供服务所需的各种证书和对应的目录</li>
+<li>证书生成后，kubeadm接下来会为其他组件生成访问kube-apiserver所需的配置文件</li>
+<li>接下来，kubeadm会为Master组件生成Pod配置文件</li>
+<li>然后，kubeadm就会为集群生成一个bootstrap token</li>
+<li>token生成之后，kubeadm会将ca.crt等Master节点的重要信息，通过ConfigMap的方式保存在Etcd中，供后续部署Node节点使用</li>
+<li>最后一步，安装默认插件</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-第一个容器化应用"><a href="#12-第一个容器化应用" class="headerlink" title="12 第一个容器化应用"></a>12 第一个容器化应用</h3><ul>
+<li>一个YAML文件，在kubernetes中，就是一个API Objetc，API对象</li>
+<li>每一个API对象，都有一个叫做Metadata的字段，就是API对象的“标识”，即元数据，是我们从kubernetes中找到这个对象的主要依据</li>
+<li>一个API对象，大多可以分为Metadata和Spec两个部分，前者是这个对象的元数据，后者存放的是属于这个对象独有的定义，用来描述它所要表达的功能</li>
+<li>一些常用的命令<ul>
+<li>kubectl apply</li>
+<li>kubectl exec</li>
+<li>kubectl delete</li>
+<li>kubectl get</li>
+<li>kubectl create -f 我的配置文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="13-为什么我们需要Pod？"><a href="#13-为什么我们需要Pod？" class="headerlink" title="13 为什么我们需要Pod？"></a>13 为什么我们需要Pod？</h3><ul>
+<li>Pod，是kubernetes项目的原子调度单位，即最小的编排单位</li>
+<li>Docker容器的本质：Namespace做隔离，Cgroups做限制，rootfs做文件系统</li>
+<li>Pod，最重要的一个事实是，它只是一个逻辑概念</li>
+<li>Pod里的所有容器，共享的是同一个Network Namespace，并且可以声明共享同一个Volume</li>
+<li>Pod的实现需要使用一个中间容器，这个容器叫做Infra容器，永远是第一个被创建的容器</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Flynn Ji</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://fly9006.github.io/2021/03/18/uncatalog/ckng0fspi00085suxan0hfg2f/">https://fly9006.github.io/2021/03/18/uncatalog/ckng0fspi00085suxan0hfg2f/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/03/22/uncatalog/ckng0fspj00095sux3q1r1ifu/">GeekTime -《深入剖析Kubernetes14-17》笔记</a>
+            
+            
+            <a class="next" rel="next" href="/2021/03/11/uncatalog/ckng0fsph00075sux0x0k9dwy/">GeekTime -《深入剖析Kubernetes05-08》笔记</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Flynn Ji | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

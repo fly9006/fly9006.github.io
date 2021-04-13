@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Flynn Ji">
+
+
+
+
+
+<title>GeekTime -《趣谈网络协议-从二层到三层》笔记 | Flynn Ji&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Flynn Ji&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">目录</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Flynn Ji&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/category">目录</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">GeekTime -《趣谈网络协议-从二层到三层》笔记</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Flynn Ji</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2019-05-03&nbsp;&nbsp;
+                        
+                        </a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="趣谈网络协议-从二层到三层"><a href="#趣谈网络协议-从二层到三层" class="headerlink" title="趣谈网络协议-从二层到三层"></a>趣谈网络协议-从二层到三层</h1><h3 id="05-从物理层到MAC层"><a href="#05-从物理层到MAC层" class="headerlink" title="05 从物理层到MAC层"></a>05 从物理层到MAC层</h3><ul>
+<li>MAC，全称是Medium Access Control，即媒体访问控制</li>
+<li>通过ARP协议，已知IP地址获取MAC地址</li>
+</ul>
+<h3 id="06-交换机与VLAN"><a href="#06-交换机与VLAN" class="headerlink" title="06 交换机与VLAN"></a>06 交换机与VLAN</h3><ul>
+<li>STP协议，Spanning Tree Protocol，最小生成树<ul>
+<li>Root Bridge，根交换机</li>
+<li>Designated Bridges，指定交换机</li>
+<li>Bridge Protocol Data Units（BPDU），网桥协议数据单元</li>
+<li>Priority Vector，优先级向量</li>
+</ul>
+</li>
+<li>利用STP协议解决环路问题，将又环路的图变成没有环的树</li>
+<li>VLAN，虚拟局域网，用来解决广播和安全问题</li>
+</ul>
+<h3 id="07-ICMP与ping"><a href="#07-ICMP与ping" class="headerlink" title="07 ICMP与ping"></a>07 ICMP与ping</h3><ul>
+<li>ICMP全称Internet Control Mesaage Protocol，互联网控制报文协议</li>
+<li>ping就是查询报文，是一种主动请求，并且获得主动应答的ICMP协议</li>
+<li>Traceroute，使用的是差错报文</li>
+</ul>
+<h3 id="08-世界那么大，我想出网关"><a href="#08-世界那么大，我想出网关" class="headerlink" title="08 世界那么大，我想出网关"></a>08 世界那么大，我想出网关</h3><ul>
+<li>网关往往是一个路由器，是一个三层转发的设备，理由如何寻找下一跳的规则</li>
+<li>NAT，Network Address Translation</li>
+<li>不改变IP地址的网关。称为转发网关；改变IP地址的网关，称为NAT网关</li>
+</ul>
+<h3 id="09-路由协议"><a href="#09-路由协议" class="headerlink" title="09 路由协议"></a>09 路由协议</h3><ul>
+<li>动态路由算法</li>
+<li>距离矢量路由算法，distance vector routing<ul>
+<li>BGP，Border Gateway Protocol，外网路由协议</li>
+</ul>
+</li>
+<li>链路状态路由算法，link state routing<ul>
+<li>OSPF，Open Shortest Path First，开放式最短路径优先，称为IGP，Interior Gateway Protocol，内部网关协议</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Flynn Ji</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://fly9006.github.io/2019/05/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckng0fspr000p5suxe2t22i66/">https://fly9006.github.io/2019/05/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckng0fspr000p5suxe2t22i66/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        <a href="/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/"># 极客时间</a>
+                    
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"># 网络协议</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/06/07/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckng0fspl000d5sux5zmu1f3z/">GeekTime -《网络编程实战-基础篇》笔记</a>
+            
+            
+            <a class="next" rel="next" href="/2019/05/01/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ckng0fspq000m5sux6oek0alw/">GeekTime -《趣谈网络协议-通信协议综述》笔记</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Flynn Ji | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
